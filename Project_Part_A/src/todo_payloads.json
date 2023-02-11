@@ -1,0 +1,174 @@
+{
+    "EXPECTED_GET_TODO": {
+        "todos": [
+            {
+                "id": "1",
+                "title": "scan paperwork",
+                "doneStatus": "false",
+                "description": "",
+                "categories": [
+                    {
+                        "id": "1"
+                    }
+                ],
+                "tasksof": [
+                    {
+                        "id": "1"
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "title": "file paperwork",
+                "doneStatus": "false",
+                "description": "",
+                "tasksof": [
+                    {
+                        "id": "1"
+                    }
+                ]
+            }
+        ]
+    },
+    "EXPECTED_GET_WITH_ID_TODO":{
+        "todos": [
+            {
+                "id": "1",
+                "title": "scan paperwork",
+                "doneStatus": "false",
+                "description": "",
+                "categories": [
+                    {
+                        "id": "1"
+                    }
+                ],
+                "tasksof": [
+                    {
+                        "id": "1"
+                    }
+                ]
+            }
+        ]
+    },
+    "EXPECTED_GET_PROJECT_WITH_TODO_ID":{
+        "projects": [
+            {
+                "id": "1",
+                "title": "Office Work",
+                "completed": "false",
+                "active": "false",
+                "description": "",
+                "tasks": [
+                    {
+                        "id": "1"
+                    },
+                    {
+                        "id": "2"
+                    }
+                ]
+            }
+        ]
+    },
+    "EXPECTED_QUERY_TODO":{
+        "todos": [
+            {
+                "id": "1",
+                "title": "scan paperwork",
+                "doneStatus": "false",
+                "description": "",
+                "tasksof": [
+                    {
+                        "id": "1"
+                    }
+                ],
+                "categories": [
+                    {
+                        "id": "1"
+                    }
+                ]
+            }
+        ]
+    },
+    "NEW_TODO": {
+        "title": "new paperwork",
+        "doneStatus": false,
+        "description": "get to work folks"
+    },
+    "UPDATE_TODO": {
+        "title": "very old paper work",
+        "doneStatus": true,
+        "description": "Thankfully this is done"
+    },
+    "EXPECTED_NEW_TODO": {
+        "id": "3",
+        "title": "new paperwork",
+        "doneStatus": "false",
+        "description": "get to work folks"
+    },
+    "EXPECTED_UPDATED_TODO": {
+        "id": "1",
+        "title": "very old paper work",
+        "doneStatus": "true",
+        "description": "Thankfully this is done",
+        "categories": [
+            {
+                "id": "1"
+            }
+        ],
+        "tasksof": [
+            {
+                "id": "1"
+            }
+        ]
+    },
+    "NEW_PROJECT":{
+        "title": "new project"
+    },
+    "PROJECT_ID":{
+        "id":"2"
+    },
+    "EXPECTED_UPDATED_TASK_OF":{
+        "projects": [
+            {
+                "id": "1",
+                "title": "Office Work",
+                "completed": "false",
+                "active": "false",
+                "description": "",
+                "tasks": [
+                    {
+                        "id": "1"
+                    },
+                    {
+                        "id": "2"
+                    }
+                ]
+            },
+            {
+                "id": "2",
+                "title": "new project",
+                "completed": "false",
+                "active": "false",
+                "description": "",
+                "tasks": [
+                    {
+                        "id": "1"
+                    }
+                ]
+            }
+        ]
+    },
+    "EXPECTED_DELETED_TASK_OF":{
+        "projects": []
+    },
+    "EXPECTED_UPDATED_TODO_BAD_XML": {
+      "errorMessages": [
+        "java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $"
+      ]
+    },
+    "EXPECTED_UPDATED_TODO_WRONG_FORMAT_XML": {
+      "errorMessages": [
+        "Mismatched close tag gf at 124 [character 4 line 8]"
+      ]
+    }
+}

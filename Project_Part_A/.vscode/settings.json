@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/raniaouassif/Downloads/javax.json-api-1.1.4.jar",
+        "/Users/raniaouassif/Downloads/jackson-databind-2.14.2.jar",
+        "/Users/raniaouassif/Downloads/jackson-core-2.4.4.jar",
+        "/Users/raniaouassif/Downloads/jar_files/jackson-annotations-2.14.2.jar"
+    ]
+}
