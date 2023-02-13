@@ -1,9 +1,20 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "/Users/raniaouassif/Downloads/javax.json-api-1.1.4.jar",
-        "/Users/raniaouassif/Downloads/jackson-databind-2.14.2.jar",
-        "/Users/raniaouassif/Downloads/jackson-core-2.4.4.jar",
-        "/Users/raniaouassif/Downloads/jar_files/jackson-annotations-2.14.2.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "test-lib/**/*.jar",
+            "/Users/raniaouassif/Downloads/jar_files/jackson-annotations-2.14.2.jar",
+            "/Users/raniaouassif/Downloads/jar_files/jackson-core-2.14.2.jar",
+            "/Users/raniaouassif/Downloads/jar_files/jackson-databind-2.14.2.jar",
+            "test-lib1/**/*.jar",
+            "test-lib2/**/*.jar"
+        ],
+        "exclude": [
+            "/Users/raniaouassif/Downloads/jackson-core-2.4.4.jar",
+            "/Users/raniaouassif/Downloads/jackson-databind-2.14.2.jar",
+            "lib/junit-platform-console-standalone-1.9.2.jar",
+            "test-lib/junit-platform-console-standalone-1.9.2.jar",
+            "test-lib1/junit-platform-console-standalone-1.9.2.jar"
+        ]
+    }
 }
