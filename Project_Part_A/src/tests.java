@@ -1,3 +1,11 @@
+/* ECSE429 Software Validation - Automation Project Part A 
+ * Unit test suite of "rest api todo list" 
+ * Rania Ouassif 260861621
+ */
+
+ /*This class contains most of the unit tests of all the identified APIs during the exploratory testing. 
+ This excludes all tests related to PUT requests */
+ 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javax.swing.*;
@@ -5,7 +13,6 @@ import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
-import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.HashMap;
@@ -15,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.TestMethodOrder;
+
 
 @TestMethodOrder(MethodOrderer.Random.class)
 public class tests {
@@ -56,7 +64,6 @@ public class tests {
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
         assertEquals(200,response.statusCode());
-        System.out.println("\nget_todos: \n" + response.body());
     }
 
     // /todos GET  - json
@@ -126,7 +133,6 @@ public class tests {
         JsonNode root = mapper.readTree(response.body());
         JsonNode todos = root.path("todos");
         for(JsonNode todo: todos) {
-            System.out.println(todo.path("doneStatus").asText());
             assertEquals(String.valueOf(filterValue), todo.path("doneStatus").asText());
         }   
     }
@@ -142,8 +148,6 @@ public class tests {
                 .build();
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-        HttpHeaders headers = response.headers();
-        System.out.println(headers);
         assertEquals(200,response.statusCode());
     }
 
@@ -170,14 +174,32 @@ public class tests {
 
         // Parse the response body as a JSON object
         JsonNode responseBody = om.readTree(response.body());
-
+        System.out.println(responseBody);
         // Check each field in the response body against the values in the request body map
         assertEquals(val.get("title"), responseBody.get("title").asText());
         assertEquals(val.get("doneStatus"), responseBody.get("doneStatus").asBoolean());
         assertEquals(val.get("description"), responseBody.get("description").asText());
     }
 
-     // /todos POST - xml
+    // /todos POST - json
+    /**This test checks if the POST todo works without an ID using the field values in the body of the message, as specified in the API doc
+     * by checking each field in the response body against the values in the request body map*/
+    @Test
+    public void testTodosPost_json_malformed() throws IOException, InterruptedException {
+        // Create the JSON string to be sent in the request body
+        // Second key-value pair is missing a comma between the two pairs
+        String jsonMalformedString = "{\"title\":\"Meeting at 2 pm\"\"doneStatus\":false}";
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:4567/todos"))
+                .POST(HttpRequest.BodyPublishers.ofString(jsonMalformedString))
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        //Assert the status code is 400 (Bad Request)
+        assertEquals(400,response.statusCode());
+    }
+
+    // /todos POST - xml
     /**This test checks if the POST todo works without an ID using the field values in the body of the message, as specified in the API doc
      * by checking each field in the response body against the values in the request body map*/
     @Test
@@ -201,6 +223,29 @@ public class tests {
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
         //Assert the status code is 201 (created)
         assertEquals(201,response.statusCode());
+    }
+
+    // /todos POST - xml
+    /**This test checks if the POST todo works with a malformed XML payload.*/
+    @Test
+    public void testTodosPost_xml_malformed() throws IOException, InterruptedException {
+        // Create the XML string to be sent in the request body
+        // Missing closing tag </doneStatus>
+        var xmlMalformedString = "<todo>" +
+            "<doneStatus>false" +
+            "<title>Meeting at 2 pm</title>" +
+            "</todo>";
+        // Create a new HttpClient object
+        HttpClient client = HttpClient.newHttpClient();
+        // Create the HttpRequest object, specifying the POST method and the URL endpoint
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:4567/todos"))
+                .header("Content-Type", "application/xml") // Set the Content-Type header to indicate the format of the request body
+                .POST(HttpRequest.BodyPublishers.ofString(xmlMalformedString))
+                .build();
+        HttpResponse<Void> response = client.send(request, HttpResponse.BodyHandlers.discarding());
+        //Assert the status code is 400 (Bad Request)
+        assertEquals(400,response.statusCode());
     }
 
     // /todos POST  - id in the body
@@ -264,11 +309,8 @@ public class tests {
             put("doneStatus", false);
             put("description", "My new todo description is a string.");
         }};
-
         var om = new ObjectMapper();
         String requestBody = om.writeValueAsString(val);
-
-        System.out.println(requestBody);
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("http://localhost:4567/todos"))
@@ -414,37 +456,6 @@ public class tests {
         assertEquals(409,response.statusCode());
     }
 
-    // /todos/:id PUT
-    /*This test shows that the PUT API call returns a successful status code (200) and modifies the amended fields. */
-    @Test
-    public void testTodoPut() throws IOException, InterruptedException {
-        int id = 2; 
-        var val = new HashMap<String, Object>() {{
-            put("title", "Modified Todo");
-            put("doneStatus", true);
-            put("description", "this is a modified desc using PUT ");
-        }};
-
-        var om = new ObjectMapper();
-        String requestBody = om.writeValueAsString(val);
-
-        HttpClient client = HttpClient.newHttpClient();
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("http://localhost:4567/todos/" + id)) // adding id in endpoint as per API doc
-                .PUT(HttpRequest.BodyPublishers.ofString(requestBody))
-                .build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        assertEquals(200,response.statusCode()); 
-
-        System.out.println(response.body());
-        // Parse the response body as a JSON object
-        JsonNode responseBody = om.readTree(response.body());
-        // Check each field in the response body against the values in the request body map
-        assertEquals(val.get("title"), responseBody.get("title").asText());
-        assertEquals(val.get("doneStatus"), responseBody.get("doneStatus").asBoolean());
-        assertEquals(val.get("description"), responseBody.get("description").asText());
-    }
-
     //  /todos/:id PATCH
     /* Test to see if the PATCH API request sends returns method not allowed with status code 405. 
      * Note : This is an undocumented API tested during exploratory testing
@@ -511,7 +522,6 @@ public class tests {
                 .build();
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-        // System.out.println(response.body());
         assertEquals(200,response.statusCode());
     }
 
@@ -569,7 +579,7 @@ public class tests {
     }
 
     //  /todos/:id/tasksof POST 
-    /* Notes: This test checks if the POST API indeed works without ids, as seen in the exploratory testing. */
+    /* Notes: This test checks if the POST API successfully creates relationship between given todo ID and project ID */
     @Test
     public void testTodosTasksofPost() throws IOException, InterruptedException {
         int id = 1;
@@ -585,8 +595,45 @@ public class tests {
                 .build();
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
         assertEquals(201,response.statusCode());
+    }
+
+    //  /todos/:id/tasksof POST 
+    /* Notes: This test checks if the POST API returns 404 Not Found when creating relationship between nonexisting todo and existing project ID */
+    @Test
+    public void testTodosTasksofPost_nonexistingTodo() throws IOException, InterruptedException {
+        int id = 0;// Nonexisting todo 
+        var val = new HashMap<String, String>() {{
+            put("id", "1");
+        }};
+        var om = new ObjectMapper();
+        String requestBody = om.writeValueAsString(val);
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:4567/todos/" + id + "/tasksof"))
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        assertEquals(404,response.statusCode());
+    }
+
+    //  /todos/:id/tasksof POST 
+    /* Notes: This test checks if the POST API returns 404 Not Found when creating relationship between existing todo and nonexisting project ID */
+    @Test
+    public void testTodosTasksofPost_nonexistingProject() throws IOException, InterruptedException {
+        int id = 1;
+        var val = new HashMap<String, String>() {{
+            put("id", "0");
+        }};
+        var om = new ObjectMapper();
+        String requestBody = om.writeValueAsString(val);
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:4567/todos/" + id + "/tasksof"))
+                .POST(HttpRequest.BodyPublishers.ofString(requestBody))
+                .build();
+        HttpResponse<Void> response = client.send(request,HttpResponse.BodyHandlers.discarding());
+        assertEquals(404,response.statusCode());
     }
 
     ////////////////////  4. /todos/:id/tasksof/:id  ///////////////////////////////
@@ -656,7 +703,6 @@ public class tests {
                 .build();
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
         assertEquals(200,response.statusCode());
 
         // Convert the response body to a JSON object
@@ -700,7 +746,6 @@ public class tests {
                 .build();
         HttpResponse<String> response = client.send(request,
                 HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
         assertEquals(201,response.statusCode());
     }
 
@@ -708,6 +753,7 @@ public class tests {
     ////////////////////  5. /todos/:id/categories/:id  ///////////////////////////////
 
     // /todos/:id/categories DELETE
+    /* Test to see if delete returns successful request (200) */
     @Test
     public void testTodosCategoriesDelete() throws IOException, InterruptedException {
         HttpClient client = HttpClient.newHttpClient();
@@ -716,22 +762,6 @@ public class tests {
                 .DELETE()
                 .build();
         HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Response Body: " + response.body());
-        System.out.println(response.statusCode());
         assertEquals(200,response.statusCode());
     }
-
-    // //Shutdown API 
-    // @AfterAll
-    // public void system_shutdown() throws IOException, InterruptedException {
-    //     HttpClient client = HttpClient.newHttpClient();
-    //     HttpRequest request = HttpRequest.newBuilder()
-    //             .uri(URI.create("http://localhost:4567/shutdown"))
-    //             .GET()
-    //             .build();
-    //     HttpResponse<Void> response = client.send(request,
-    //             HttpResponse.BodyHandlers.discarding());
-    //     assertEquals(200,response.statusCode());
-    //     System.out.println("\nShutdown: \n" + response.body());       
-    // }
 }
