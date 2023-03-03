@@ -1,4 +1,28 @@
 -------------------------------------------------------------------------------
 Test set: com.ECSE429.BDDTest.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.867 s - in com.ECSE429.BDDTest.RunCucumberTest
+Tests run: 17, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 26.812 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
+Examples.Example #1.1  Time elapsed: 1.554 s  <<< ERROR!
+java.lang.IllegalStateException: closed
+	at okio.RealBufferedSource.select(RealBufferedSource.kt:218)
+	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265)
+	at okhttp3.ResponseBody.string(ResponseBody.kt:187)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.an_error_message_with_status_code_is_returned(TodosStepDefinitions.java:393)
+	at ✽.an error message "Failed Validation: title : can not be empty" with status code "400" is returned(classpath:features/AddTodo.feature:30)
+
+Examples.Example #1.1  Time elapsed: 1.55 s  <<< ERROR!
+java.lang.IllegalStateException: closed
+	at okio.RealBufferedSource.select(RealBufferedSource.kt:218)
+	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265)
+	at okhttp3.ResponseBody.string(ResponseBody.kt:187)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.an_error_message_with_status_code_is_returned(TodosStepDefinitions.java:393)
+	at ✽.an error message "Could not find an instance with todos/0" with status code "404" is returned(classpath:features/GetTodoById.feature:31)
+
+Examples.Example #1.2  Time elapsed: 1.569 s  <<< ERROR!
+java.lang.IllegalStateException: closed
+	at okio.RealBufferedSource.select(RealBufferedSource.kt:218)
+	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265)
+	at okhttp3.ResponseBody.string(ResponseBody.kt:187)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.an_error_message_with_status_code_is_returned(TodosStepDefinitions.java:393)
+	at ✽.an error message "Could not find an instance with todos/100" with status code "404" is returned(classpath:features/GetTodoById.feature:31)
+

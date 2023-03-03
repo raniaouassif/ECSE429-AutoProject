@@ -325,7 +325,6 @@ public class TodosStepDefinitions {
 
         // Create relationship categories between todos and catagories using a POST request
         response = call.todosPost("todos/" + todoId + "/categories", "json", requestBody);
-
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -341,12 +340,10 @@ public class TodosStepDefinitions {
         // Create a JSON object with an "id" field containing the category id
         JSONObject requestBody = new JSONObject();
         requestBody.put("title", "updated todo");
-
         JSONArray categoriesArray = new JSONArray();
         JSONObject categoryObject = new JSONObject();
         categoryObject.put("id", categoryId);
         categoriesArray.put(categoryObject);
-
         requestBody.put("categories", categoriesArray);
         // Create relationship categories between todos and catagories using a PUT request
         response = call.todosPut("todos/" + todoId, "json", requestBody);
