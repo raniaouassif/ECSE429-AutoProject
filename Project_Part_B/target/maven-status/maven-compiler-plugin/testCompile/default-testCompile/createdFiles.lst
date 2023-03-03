@@ -1,3 +1,2 @@
-BDDTest/IsItFriday.class
-BDDTest/RunCucumberTest.class
-BDDTest/StepDefinitions.class
+com/ECSE429/BDDTest/RunCucumberTest.class
+com/ECSE429/BDDTest/TodosStepDefinitions.class
