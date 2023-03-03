@@ -30,7 +30,7 @@ Feature: Post Todo Category
   Scenario Outline: Create a relationship between nonexistent todo and category (Error Flow)
     Given the todo with id "<todoId>" does not exist
     And the category with id "<categoryId>" exists
-    When I add a relationship between todo with id "<todoId>" and category with id "<categoryId>" using id in endpoint
+    When I add a relationship between todo with id "<todoId>" and nonexistent category with id "<categoryId>" using id in endpoint
     Then an error message "<errorMessage>" with status code "<errorCode>" is returned
     Examples:
       | todoId  | categoryId | errorCode   | errorMessage                                                       |

@@ -325,11 +325,7 @@ public class TodosStepDefinitions {
 
         // Create relationship categories between todos and catagories using a POST request
         response = call.todosPost("todos/" + todoId + "/categories", "json", requestBody);
-        try {
-            responseBody = new JSONObject(response.body().string());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @When("I add a relationship between todo with id {string} and category with id {string} using put method")
@@ -347,7 +343,20 @@ public class TodosStepDefinitions {
         requestBody.put("categories", categoriesArray);
         // Create relationship categories between todos and catagories using a PUT request
         response = call.todosPut("todos/" + todoId, "json", requestBody);
+    }
 
+    @When("I add a relationship between todo with id {string} and nonexistent category with id {string} using id in endpoint")
+    public void i_add_a_relationship_between_todo_with_id_and_nonexistent_category_with_id_using_id_in_endpoint(String todoId, String categoryId) {
+        // Create a RestApiCall object to handle the API request
+        RestApiCall call = new RestApiCall();
+
+        // Create a JSON object with an "id" field containing the category id
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("id", categoryId);
+        System.out.println(requestBody);
+
+        // Create relationship categories between todos and catagories using a POST request
+        response = call.todosPost("todos/" + todoId + "/categories", "json", requestBody);
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -403,5 +412,6 @@ public class TodosStepDefinitions {
         assertEquals(errorMessage, responseErrorMessage);
         assertEquals(Integer.parseInt(errorCode), response.code());
     }
+
 
 }
