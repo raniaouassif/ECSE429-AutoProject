@@ -771,6 +771,6 @@ public class TodosStepDefinitions {
         JSONArray errorMessages = responseBody.getJSONArray("errorMessages");
         String responseErrorMessage = errorMessages.getString(0);
         assertEquals(errorMessage, responseErrorMessage, "ERROR: The actual error message does not match the expected error message.");
-        
+
     }
 }
