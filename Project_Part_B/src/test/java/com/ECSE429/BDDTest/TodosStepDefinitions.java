@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -279,7 +280,7 @@ public class TodosStepDefinitions {
             JSONObject getTodosResponseBody = new JSONObject(getTodos.body().string());
             // Get the "todos" array from the response body
             JSONArray todosArray = getTodosResponseBody.getJSONArray("todos");
-            // Loop through the todos in the array and check if the specified todo exists
+            // Loop through the todos in the array and check if the specified todos exists
             for (Object obj : todosArray) {
                 JSONObject todo = (JSONObject) obj;
                 String todoIdStr = todo.getString("id");
@@ -569,7 +570,7 @@ public class TodosStepDefinitions {
             JSONArray todosArray = getTodoResponseBody.getJSONArray("todos");
             // Get the first element of the "todos" array
             JSONObject todoObject = todosArray.getJSONObject(0);
-            // Get the "tasksof" array from the "todo" object
+            // Get the "tasksof" array from the todos object
             JSONArray tasksofArray = todoObject.getJSONArray("tasksof");
 
             // Loop through the tasksof in the array and check if the specified project exists
@@ -697,8 +698,9 @@ public class TodosStepDefinitions {
         // Parse the response body and extract the category ids
         try {
             responseBody = new JSONObject(response.body().string());
-            JSONArray categoriesArray = responseBody.getJSONArray("categories");
 
+            // Should return object with key categories
+            JSONArray categoriesArray = responseBody.getJSONArray("categories");
             for (int i = 0; i < categoriesArray.length(); i++) {
                 JSONObject category = categoriesArray.getJSONObject(i);
                 String categoryId = category.getString("id");
@@ -710,7 +712,7 @@ public class TodosStepDefinitions {
     }
 
     @When("I get the todo's categories with id {string} using todo endpoint")
-    public void i_get_the_todo_s_categories_with_id_through_todo_categories_field(String todoId) {
+    public void i_get_the_todo_s_categories_with_id_using_todo_endpoint(String todoId) {
         // Initialize the todoCategoriesIds list
         todoCategoriesIds = new ArrayList<>();
 
@@ -720,17 +722,20 @@ public class TodosStepDefinitions {
 
         try {
             responseBody = new JSONObject(response.body().string());
-
             JSONArray todosArray = responseBody.getJSONArray("todos");
             JSONObject todo = todosArray.getJSONObject(0);
-            JSONArray categoriesArray = todo.getJSONArray("categories");
 
-            for (int i = 0; i < categoriesArray.length(); i++) {
-                JSONObject category = categoriesArray.getJSONObject(i);
-                String categoryId = category.getString("id");
-                todoCategoriesIds.add(categoryId);
+            // If the todos has at least one categories
+            // It should have the key categories
+            if(todo.has("categories")){
+                JSONArray categoriesArray = todo.getJSONArray("categories");
+                // Populate todoCategoriesIds with the category ids
+                for (int i = 0; i < categoriesArray.length(); i++) {
+                    JSONObject category = categoriesArray.getJSONObject(i);
+                    String categoryId = category.getString("id");
+                    todoCategoriesIds.add(categoryId);
+                }
             }
-
         } catch(IOException e) {
             e.printStackTrace();
         }
@@ -738,20 +743,18 @@ public class TodosStepDefinitions {
 
     @Then("I should see all the todo related categories with ids {string}")
     public void i_should_see_all_the_todo_related_categories_with_ids(String categoryIds) {
-        // Split the expected category ids string into a list of ids
-        List<String> expectedCategoriesIds = Arrays.asList(categoryIds.split(","));
+        // Split the expected category ids string into a list of ids if the categoryIds is not empty
+        List<String> expectedCategoriesIds;
+        expectedCategoriesIds = categoryIds.isEmpty() ? new ArrayList<>() : Arrays.asList(categoryIds.split(",")) ;
 
         // Sort the categories array in case the order of the elements in the expected and actual lists is different
         Collections.sort(expectedCategoriesIds);
         Collections.sort(todoCategoriesIds);
 
-        // Compare the expected category ids with the actual category ids returned from the API
-        assertEquals(expectedCategoriesIds, todoCategoriesIds);
+        assertEquals(expectedCategoriesIds,todoCategoriesIds);
     }
 
     // CODES AND MESSAGES
-
-
     @Then("a status code {string} with response phrase {string} is returned")
     public void a_status_code_with_response_phrase_is_returned(String statusCode, String responsePhrase) {
         assertEquals(Integer.parseInt(statusCode), response.code(),

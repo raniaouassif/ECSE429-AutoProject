@@ -4,6 +4,7 @@ Feature: Get Todo By Id
 
   Background:
     Given the service is running
+    And I add a new todo with title "New Todo"
 
   Scenario Outline: Get a todo by id in endpoint (Normal Flow)
     Given the todo with id "<todoId>" exists
@@ -14,6 +15,7 @@ Feature: Get Todo By Id
       | todoId  |
       | 1       |
       | 2       |
+      | 3       |
 
   Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow)
     Given the todo with id "<todoId>" exists
@@ -24,6 +26,7 @@ Feature: Get Todo By Id
       | todoId  |
       | 1       |
       | 2       |
+      | 3       |
 
   Scenario Outline: Get a nonexistent todo (Error Flow)
     Given the todo with id "<todoId>" does not exist

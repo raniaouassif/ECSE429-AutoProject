@@ -9,7 +9,6 @@ import org.junit.platform.suite.api.SelectClasspathResource;
 import org.junit.platform.suite.api.Suite;
 import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
-
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
@@ -17,10 +16,10 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 public class RunCucumberTest {
     @Before
     public static void setupEnvironment() {
-        Runtime rt = Runtime.getRuntime();
+        Runtime runtime = Runtime.getRuntime();
         try {
-            // Execute
-            rt.exec("java -jar runTodoManagerRestAPI-1.5.5.jar");
+            // Lauch the rest api todos list manager with the command
+            runtime.exec("java -jar runTodoManagerRestAPI-1.5.5.jar");
             System.out.println("Setting up environment");
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,10 +31,4 @@ public class RunCucumberTest {
         System.out.println("Shutdown system");
         call.getRequest("shutdown", "json");
     }
-
 }
-
-
-
-
-
