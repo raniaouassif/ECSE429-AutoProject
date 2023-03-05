@@ -1,8 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: com.ECSE429.BDDTest.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 60, Failures: 5, Errors: 1, Skipped: 0, Time elapsed: 92.546 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
-Examples.Example #1.4  Time elapsed: 1.574 s  <<< FAILURE!
+Tests run: 59, Failures: 4, Errors: 2, Skipped: 0, Time elapsed: 93.881 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
+Examples.Example #1.3  Time elapsed: 2.617 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "okhttp3.Response.code()" because "this.response" is null
+	at com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running(TodosStepDefinitions.java:37)
+	at ✽.the service is running(classpath:features/AddTodo.feature:6)
+
+Examples.Example #1.4  Time elapsed: 1.55 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: Created
  instead of : Bad Request ==> expected: <400> but was: <201>
@@ -14,7 +19,7 @@ ERROR: The response phrase is: Created
 	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
 	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/AddTodo.feature:64)
 
-Examples.Example #1.7  Time elapsed: 1.512 s  <<< ERROR!
+Examples.Example #1.8  Time elapsed: 1.534 s  <<< ERROR!
 io.cucumber.junit.platform.engine.UndefinedStepException: 
 The step 'I add a new todos with title "MyTodo" with invalid key-value pairs separator """' is undefined.
 You can implement this step using the snippet(s) below:
@@ -121,18 +126,7 @@ public void i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
 
-Examples.Example #1.9  Time elapsed: 1.526 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: <com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $.> but was: <com.google.gson.stream.MalformedJsonException: Expected value at line 2 column 10 path $.>
-	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
-	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
-	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
-	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
-	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(TodosStepDefinitions.java:770)
-	at ✽.the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $."(classpath:features/AddTodo.feature:65)
-
-Examples.Example #1.4  Time elapsed: 1.496 s  <<< FAILURE!
+Examples.Example #1.4  Time elapsed: 1.515 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Not Found ==> expected: <404> but was: <200>
@@ -144,7 +138,7 @@ ERROR: The response phrase is: OK
 	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
 	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
 
-Examples.Example #1.5  Time elapsed: 1.54 s  <<< FAILURE!
+Examples.Example #1.5  Time elapsed: 1.532 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Not Found ==> expected: <404> but was: <200>
@@ -156,7 +150,7 @@ ERROR: The response phrase is: OK
 	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
 	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
 
-Examples.Example #1.1  Time elapsed: 1.701 s  <<< FAILURE!
+Examples.Example #1.1  Time elapsed: 1.61 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Bad Request ==> expected: <400> but was: <200>
