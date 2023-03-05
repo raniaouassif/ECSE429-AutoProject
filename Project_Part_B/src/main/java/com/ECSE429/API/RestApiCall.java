@@ -8,16 +8,9 @@ import java.io.IOException;
 public class RestApiCall {
     String baseUrl = "http://localhost:4567/";
 
-    public static void main(String[] args){
-        RestApiCall todoCall = new RestApiCall();
-        //Response x = todoCall.head("todos", "json");
-//        try {
-//            System.out.println(x.headers().toString());
-//        } catch (Exception e ){
-//            e.printStackTrace();
-//        }
-    }
-
+    /**
+     * Verify that the server is running
+     */
     public Response checkService() {
         OkHttpClient client = new OkHttpClient();
         Response response = null;
@@ -36,7 +29,14 @@ public class RestApiCall {
         return response;
     }
 
-    public Response todosGet(String url, String contentType){
+    /**
+     * Sends a GET request to the specified URL with the given JSON body
+     *
+     * @param url         the URL to send the request to
+     * @param contentType the content type of the request body (json or XML)
+     * @return a Response object containing the response from the server, or null if there was an error
+     */
+    public Response getRequest(String url, String contentType){
         OkHttpClient client = new OkHttpClient();
         Response response = null;
         // Construct the full URL by appending the base URL to the endpoint URL
@@ -58,12 +58,12 @@ public class RestApiCall {
     /**
      * Sends a POST request to the specified URL with the given JSON body
      *
-     * @param url         the URL to send the request to
+     * @param url         the endpoint URL to send the request to
      * @param contentType the content type of the request body (json or XML)
      * @param jsonBody    the JSON body of the request
      * @return a Response object containing the response from the server, or null if there was an error
      */
-    public Response todosPost(String url, String contentType, JSONObject jsonBody){
+    public Response postRequest(String url, String contentType, JSONObject jsonBody){
         OkHttpClient client = new OkHttpClient();
         Response response = null;
         // Construct the full URL by appending the base URL to the endpoint URL
@@ -86,7 +86,15 @@ public class RestApiCall {
         return response;
     }
 
-    public Response todosPut(String url, String contentType, JSONObject jsonBody){
+    /**
+     * Sends a PUT request to the specified URL with the given JSON body
+     *
+     * @param url         the URL to send the request to
+     * @param contentType the content type of the request body (json or XML)
+     * @param jsonBody    the JSON body of the request
+     * @return a Response object containing the response from the server, or null if there was an error
+     */
+    public Response putRequest(String url, String contentType, JSONObject jsonBody){
         OkHttpClient client = new OkHttpClient();
         Response response = null;
         // Construct the full URL by appending the base URL to the endpoint URL
@@ -100,6 +108,32 @@ public class RestApiCall {
                 .url(url)
                 .addHeader("content-type", "application/" + contentType + "; charset=utf-8")
                 .put(body)
+                .build();
+        try {
+            response = client.newCall(request).execute();
+        } catch (IOException e) {
+            return null;
+        }
+        return response;
+    }
+
+    /**
+     * Sends a DELETE request to the specified URL
+     *
+     * @param url         the URL to send the request to
+     * @param contentType the content type of the request body (json or XML)
+     * @return a Response object containing the response from the server, or null if there was an error
+     */
+    public Response deleteRequest(String url, String contentType){
+        OkHttpClient client = new OkHttpClient();
+        Response response = null;
+        // Construct the full URL by appending the base URL to the endpoint URL
+        url = baseUrl + url;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("content-type", "application/" + contentType + "; charset=utf-8")
+                .delete()
                 .build();
         try {
             response = client.newCall(request).execute();

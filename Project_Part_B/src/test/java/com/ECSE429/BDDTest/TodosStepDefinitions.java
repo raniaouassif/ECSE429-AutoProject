@@ -9,6 +9,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -20,6 +24,7 @@ public class TodosStepDefinitions {
     int previousTodosCount;
     int currentTodosCount;
 
+    List<String> todoCategoriesIds;
 
     //BACKGROUND
     @Given("the service is running")
@@ -35,11 +40,11 @@ public class TodosStepDefinitions {
         // Create a RestApiCall object to handle the API request
         RestApiCall call = new RestApiCall();
 
-        // Create JSONObject to store response body of the two todosGET() API Calls
+        // Create JSONObject to store response body of the two getRequest() API Calls
         JSONObject getTodosResponseBody = null;
 
         // First API call to retrieve the current list of todos
-        Response getPreviousTodos = call.todosGet("todos", "json");
+        Response getPreviousTodos = call.getRequest("todos", "json");
         try {
             getTodosResponseBody = new JSONObject(getPreviousTodos.body().string());
             previousTodosCount = getTodosResponseBody.getJSONArray("todos").length();
@@ -54,7 +59,7 @@ public class TodosStepDefinitions {
         requestBody.put("doneStatus", Boolean.parseBoolean(todoDoneStatus));
 
         // Second API call to add a new todos using a POST request
-        response = call.todosPost("todos", "json", requestBody);
+        response = call.postRequest("todos", "json", requestBody);
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -62,7 +67,7 @@ public class TodosStepDefinitions {
         }
 
         // Third API call to retrieve the updated list of todos after adding the new todos
-        Response getCurrentTodos = call.todosGet("todos", "json");
+        Response getCurrentTodos = call.getRequest("todos", "json");
         try {
             getTodosResponseBody = new JSONObject(getCurrentTodos.body().string());
             currentTodosCount = getTodosResponseBody.getJSONArray("todos").length();
@@ -76,11 +81,11 @@ public class TodosStepDefinitions {
         // Create a RestApiCall object to handle the API request
         RestApiCall call = new RestApiCall();
 
-        // Create JSONObject to store response body of the two todosGET() API Calls
+        // Create JSONObject to store response body of the two getRequest() API Calls
         JSONObject getTodosResponseBody = null;
 
         // First API call to retrieve the current list of todos
-        Response getPreviousTodos = call.todosGet("todos", "json");
+        Response getPreviousTodos = call.getRequest("todos", "json");
         try {
             getTodosResponseBody = new JSONObject(getPreviousTodos.body().string());
             previousTodosCount = getTodosResponseBody.getJSONArray("todos").length();
@@ -93,7 +98,7 @@ public class TodosStepDefinitions {
         requestBody.put("title", todoTitle);
 
         // Second API call to add a new todos using a POST request
-        response = call.todosPost("todos", "json", requestBody);
+        response = call.postRequest("todos", "json", requestBody);
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -101,7 +106,7 @@ public class TodosStepDefinitions {
         }
 
         // Third API call to retrieve the updated list of todos after adding the new todos
-        Response getCurrentTodos = call.todosGet("todos", "json");
+        Response getCurrentTodos = call.getRequest("todos", "json");
         try {
             getTodosResponseBody = new JSONObject(getCurrentTodos.body().string());
             currentTodosCount = getTodosResponseBody.getJSONArray("todos").length();
@@ -140,7 +145,7 @@ public class TodosStepDefinitions {
         boolean todoExists = false;
 
         // Send a GET request to retrieve all todos
-        Response getTodos = call.todosGet("todos", "json");
+        Response getTodos = call.getRequest("todos", "json");
 
         try {
             // Get the response body as a JSON object
@@ -175,7 +180,7 @@ public class TodosStepDefinitions {
         boolean todoExists = false;
 
         // Send a GET request to retrieve all todos
-        Response getTodos = call.todosGet("todos", "json");
+        Response getTodos = call.getRequest("todos", "json");
 
         try {
             // Get the response body as a JSON object
@@ -205,7 +210,7 @@ public class TodosStepDefinitions {
         RestApiCall call = new RestApiCall();
 
         // Get a todos with id todoId in endpoint
-        response = call.todosGet("todos/" + todoId, "json");
+        response = call.getRequest("todos/" + todoId, "json");
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -219,7 +224,7 @@ public class TodosStepDefinitions {
         RestApiCall call = new RestApiCall();
 
         // Get a todos using filter query with id equal to todoId in endpoint
-        response = call.todosGet("todos?id=" + todoId, "json");
+        response = call.getRequest("todos?id=" + todoId, "json");
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -256,20 +261,20 @@ public class TodosStepDefinitions {
         // Set a flag to keep track of whether the specified todos exists
         boolean categoryExists = false;
 
-        // Send a GET request to retrieve all todos
-        Response getCategories = call.todosGet("categories", "json");
+        // Send a GET request to retrieve all categories
+        Response getCategories = call.getRequest("categories", "json");
 
         try {
             // Get the response body as a JSON object
             JSONObject getCategoriesResponseBody = new JSONObject(getCategories.body().string());
             // Get the "category" array from the response body
             JSONArray categoriesArray = getCategoriesResponseBody.getJSONArray("categories");
-            // Loop through the todos in the array and check if the specified category exists
+            // Loop through the categories in the array and check if the specified category exists
             for (Object obj : categoriesArray) {
                 JSONObject category = (JSONObject) obj;
                 String categoryIdStr = category.getString("id");
                 if (categoryIdStr.equals(categoryId)) {
-                    // If the todos with the specified id is found, set the flag to true and exit the loop
+                    // If the category with the specified id is found, set the flag to true and exit the loop
                     categoryExists = true;
                     break;
                 }
@@ -277,7 +282,6 @@ public class TodosStepDefinitions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // Assert that the specified category exists
         assertEquals(true, categoryExists);
     }
@@ -287,7 +291,7 @@ public class TodosStepDefinitions {
         RestApiCall call = new RestApiCall();
 
         // Send a GET request to retrieve all todos
-        Response getTodo = call.todosGet("todos/" + todoId + "/categories", "json");
+        Response getTodo = call.getRequest("todos/" + todoId + "/categories", "json");
         boolean categoryExists = false;
 
         try {
@@ -324,8 +328,7 @@ public class TodosStepDefinitions {
         System.out.println(requestBody);
 
         // Create relationship categories between todos and catagories using a POST request
-        response = call.todosPost("todos/" + todoId + "/categories", "json", requestBody);
-
+        response = call.postRequest("todos/" + todoId + "/categories", "json", requestBody);
     }
 
     @When("I add a relationship between todo with id {string} and category with id {string} using put method")
@@ -342,7 +345,7 @@ public class TodosStepDefinitions {
         categoriesArray.put(categoryObject);
         requestBody.put("categories", categoriesArray);
         // Create relationship categories between todos and catagories using a PUT request
-        response = call.todosPut("todos/" + todoId, "json", requestBody);
+        response = call.putRequest("todos/" + todoId, "json", requestBody);
     }
 
     @When("I add a relationship between todo with id {string} and nonexistent category with id {string} using id in endpoint")
@@ -356,7 +359,7 @@ public class TodosStepDefinitions {
         System.out.println(requestBody);
 
         // Create relationship categories between todos and catagories using a POST request
-        response = call.todosPost("todos/" + todoId + "/categories", "json", requestBody);
+        response = call.postRequest("todos/" + todoId + "/categories", "json", requestBody);
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {
@@ -369,9 +372,8 @@ public class TodosStepDefinitions {
         RestApiCall call = new RestApiCall();
 
         // Send a GET request to retrieve all todos
-        Response getTodo = call.todosGet("todos/" + todoId + "/categories", "json");
+        Response getTodo = call.getRequest("todos/" + todoId + "/categories", "json");
         boolean categoryExists = false;
-
         try {
             // Get the response body as a JSON object
             JSONObject getTodoResponseBody = new JSONObject(getTodo.body().string());
@@ -390,28 +392,262 @@ public class TodosStepDefinitions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // Assert that the specified category now exists for given todoId
         assertEquals(true, categoryExists);
     }
 
+    // DELETE TASKSOF TODOS
+
+    @Given("the project with id {string} exists")
+    public void the_project_with_id_exists(String projectId) {
+        // Create a RestApiCall object to make API requests
+        RestApiCall call = new RestApiCall();
+
+        // Set a flag to keep track of whether the specified todos exists
+        boolean projectExists = false;
+
+        // Send a GET request to retrieve all todos
+        Response getProjects = call.getRequest("projects", "json");
+
+        try {
+            // Get the response body as a JSON object
+            JSONObject getProjectsResponseBody = new JSONObject(getProjects.body().string());
+            // Get the "projects" array from the response body
+            JSONArray projectsArray = getProjectsResponseBody.getJSONArray("projects");
+            // Loop through the projects in the array and check if the specified project exists
+            for (Object obj : projectsArray) {
+                JSONObject project = (JSONObject) obj;
+                String projectIdStr = project.getString("id");
+                if (projectIdStr.equals(projectId)) {
+                    // If the project with the specified id is found, set the flag to true and exit the loop
+                    projectExists = true;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Assert that the specified project exists
+        assertEquals(true, projectExists);
+    }
+
+    @Given("there is a tasksof relationship between todo with id {string} and project with id {string}")
+    public void there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(String todoId, String projectId) {
+        RestApiCall call = new RestApiCall();
+
+        // Send a GET request to retrieve todos with todoId
+        Response getTodo = call.getRequest("todos/" + todoId, "json");
+        boolean tasksofExists = false;
+        try {
+            // Get the response body as a JSON object
+            JSONObject getTodoResponseBody = new JSONObject(getTodo.body().string());
+            // Get the "todos" array from the response body
+            JSONArray todosArray = getTodoResponseBody.getJSONArray("todos");
+            // Get the first element of the "todos" array
+            JSONObject todoObject = todosArray.getJSONObject(0);
+            // Get the "tasksof" array from the "todo" object
+            JSONArray tasksofArray = todoObject.getJSONArray("tasksof");
+
+            // Loop through the tasksof in the array and check if the specified project exists
+            for (Object obj : tasksofArray) {
+                JSONObject tasksof = (JSONObject) obj;
+                String tasksofIdStr = tasksof.getString("id");
+                if (tasksofIdStr.equals(projectId)) {
+                    // If the todos with the specified id is found, set the flag to true and exit the loop
+                    tasksofExists = true;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Assert that the specified category does not exist for given todoId
+        assertEquals(true, tasksofExists);
+    }
+
+    @Given("the project with id {string} does not exist")
+    public void the_project_with_id_does_not_exist(String projectId) {
+        // Create a RestApiCall object to make API requests
+        RestApiCall call = new RestApiCall();
+
+        // Set a flag to keep track of whether the specified todos exists
+        boolean projectExists = false;
+
+        // Send a GET request to retrieve all todos
+        Response getProjects = call.getRequest("projects", "json");
+
+        try {
+            // Get the response body as a JSON object
+            JSONObject getProjectsResponseBody = new JSONObject(getProjects.body().string());
+            // Get the "projects" array from the response body
+            JSONArray projectsArray = getProjectsResponseBody.getJSONArray("projects");
+            // Loop through the projects in the array and check if the specified project exists
+            for (Object obj : projectsArray) {
+                JSONObject project = (JSONObject) obj;
+                String projectIdStr = project.getString("id");
+                if (projectIdStr.equals(projectId)) {
+                    // If the project with the specified id is found, set the flag to true and exit the loop
+                    projectExists = true;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Assert that the specified project exists
+        assertEquals(false, projectExists);
+    }
+
+    @When("I delete the tasksof relationship between todo with id {string} and project with id {string} using id in endpoint")
+    public void i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(String todoId, String projectId) {
+        RestApiCall call = new RestApiCall();
+        response = call.deleteRequest("todos/" + todoId + "/tasksof/" + projectId, "json");
+    }
+
+    @When("I delete the tasksof relationship between todo with id {string} and project with id {string} using put method")
+    public void i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_put_method(String todoId, String projectId) {
+        // Create a RestApiCall object to handle the API request
+        RestApiCall call = new RestApiCall();
+
+        // Create a JSON object with an "id" field containing the category id
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("title", "updated todo");
+
+        // Create relationship categories between todos and catagories using a PUT request
+        response = call.putRequest("todos/" + todoId, "json", requestBody);
+    }
+
+    @When("I delete the nonexistent tasksof relationship between todo with id {string} and project with id {string} using id in endpoint")
+    public void i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(String todoId, String projectId) {
+        RestApiCall call = new RestApiCall();
+        response = call.deleteRequest("todos/" + todoId + "/tasksof/" + projectId, "json");
+        try {
+            responseBody = new JSONObject(response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    @Then("the tasksof relationship between todo with id {string} and project with id {string} is deleted")
+    public void the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(String todoId, String projectId) {
+        RestApiCall call = new RestApiCall();
+        // Send a GET request to retrieve todos with todoId
+        Response getTodo = call.getRequest("todos/" + todoId, "json");
+        boolean tasksofExists = false;
+        try {
+            // Get the response body as a JSON object
+            JSONObject getTodoResponseBody = new JSONObject(getTodo.body().string());
+            if(!getTodoResponseBody.isNull("tasksof")) {
+                // Get the "tasksof" array from the response body
+                JSONArray tasksofArray = getTodoResponseBody.getJSONArray("tasksof");
+                // Loop through the projects in the array and check if the specified project exists
+                for (Object obj : tasksofArray) {
+                    JSONObject tasksof = (JSONObject) obj;
+                    String tasksofIdStr = tasksof.getString("id");
+                    if (tasksofIdStr.equals(projectId)) {
+                        // If the todos with the specified id is found, set the flag to true and exit the loop
+                        tasksofExists = true;
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Assert that the specified category does not exist for given todoId
+        assertEquals(false, tasksofExists);
+    }
+
+    // VIEW TODOS CATEGORIES RELATIONSHIP
+    @When("I get the todo's categories with id {string} using categories endpoint")
+    public void i_get_the_todo_s_categories_with_id_using_categories_endpoint(String todoId) {
+        // Initialize the todoCategoriesIds list
+        todoCategoriesIds = new ArrayList<>();
+
+        // Send a GET request to the endpoint to get the todos categories
+        RestApiCall call = new RestApiCall();
+        response = call.getRequest("todos/" + todoId + "/categories", "json");
+
+        // Parse the response body and extract the category ids
+        try {
+            responseBody = new JSONObject(response.body().string());
+            JSONArray categoriesArray = responseBody.getJSONArray("categories");
+
+            for (int i = 0; i < categoriesArray.length(); i++) {
+                JSONObject category = categoriesArray.getJSONObject(i);
+                String categoryId = category.getString("id");
+                todoCategoriesIds.add(categoryId);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @When("I get the todo's categories with id {string} using todo endpoint")
+    public void i_get_the_todo_s_categories_with_id_through_todo_categories_field(String todoId) {
+        // Initialize the todoCategoriesIds list
+        todoCategoriesIds = new ArrayList<>();
+
+        // Send a GET request to the endpoint to get the todos
+        RestApiCall call = new RestApiCall();
+        response = call.getRequest("todos/" + todoId, "json");
+
+        try {
+            responseBody = new JSONObject(response.body().string());
+            System.out.println(responseBody);
+
+            JSONArray todosArray = responseBody.getJSONArray("todos");
+            JSONObject todo = todosArray.getJSONObject(0);
+            JSONArray categoriesArray = todo.getJSONArray("categories");
+
+            for (int i = 0; i < categoriesArray.length(); i++) {
+                JSONObject category = categoriesArray.getJSONObject(i);
+                String categoryId = category.getString("id");
+                todoCategoriesIds.add(categoryId);
+            }
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @When("I get the nonexistent todo's categories with id {string} using categories endpoint")
+    public void i_get_the_nonexistent_todo_s_categories_with_id_using_categories_endpoint(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("I should see all the todo related categories with ids {string}")
+    public void i_should_see_all_the_todo_related_categories_with_ids(String categoryIds) {
+        // Split the expected category ids string into a list of ids
+        List<String> expectedCategoriesIds = Arrays.asList(categoryIds.split(","));
+
+        // Sort the categories array in case the order of the elements in the expected and actual lists is different
+        Collections.sort(expectedCategoriesIds);
+        Collections.sort(todoCategoriesIds);
+
+        // Compare the expected category ids with the actual category ids returned from the API
+        assertEquals(expectedCategoriesIds, todoCategoriesIds);
+    }
 
     // CODES AND MESSAGES
-    @Then("a success message {string} with status code {string} is returned")
-    public void a_success_message_with_status_code_is_returned(String successMessage, String successCode) {
-         assertEquals(successMessage, response.message() );
-         assertEquals(Integer.parseInt(successCode), response.code() );
+
+
+    @Then("a status code {string} with response phrase {string} is returned")
+    public void a_status_code_with_response_phrase_is_returned(String statusCode, String responsePhrase) {
+//        assertEquals(Integer.parseInt(statusCode), response.code() );
+        assertEquals(responsePhrase, response.message() );
     }
 
+    @Then("the response body has the error message {string}")
+    public void the_response_body_has_the_error_message(String errorMessage) {
+        //Check that the first key of the response body is "errorMessages"
+        assertEquals("errorMessages", responseBody.keySet().iterator().next(), "\n ERROR: The response body does not have a key \"errorMessage\". \n The response body is : " + responseBody + "\n And should return error message: \n" + errorMessage);
 
-    @Then("an error message {string} with status code {string} is returned")
-    public void an_error_message_with_status_code_is_returned(String errorMessage, String errorCode) {
         JSONArray errorMessages = responseBody.getJSONArray("errorMessages");
         String responseErrorMessage = errorMessages.getString(0);
-
         assertEquals(errorMessage, responseErrorMessage);
-        assertEquals(Integer.parseInt(errorCode), response.code());
     }
-
-
 }

@@ -8,30 +8,31 @@ Feature: Get Todo By Id
   Scenario Outline: Get a todo by id in endpoint (Normal Flow)
     Given the todo with id "<todoId>" exists
     When I get the todo with id "<todoId>"
-    Then a success message "<successMessage>" with status code "<successCode>" is returned
+    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
     And I should see a response of one todo with id "<todoId>"
     Examples:
-      | todoId  | successCode | successMessage |
-      | 1       | 200         | OK             |
-      | 2       | 200         | OK             |
+      | todoId  | statusCode   | responsePhrase   |
+      | 1       | 200          | OK               |
+      | 2       | 200          | OK               |
 
   Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow)
     Given the todo with id "<todoId>" exists
     When I filter the endpoint to get the todo with id "<todoId>"
-    Then a success message "<successMessage>" with status code "<successCode>" is returned
+    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
     And I should see a response of one todo with id "<todoId>"
     Examples:
-      | todoId  | successCode | successMessage |
-      | 1       | 200         | OK             |
-      | 2       | 200         | OK             |
+      | todoId  | statusCode   | responsePhrase   |
+      | 1       | 200          | OK               |
+      | 2       | 200          | OK               |
 
   Scenario Outline: Get a nonexistent todo (Error Flow)
     Given the todo with id "<todoId>" does not exist
     When I get the todo with id "<todoId>"
-    Then an error message "<errorMessage>" with status code "<errorCode>" is returned
+    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
+    And the response body has the error message "<errorMessage>"
     And no todo is returned
     Examples:
-      | todoId  | errorCode   | errorMessage                                |
-      | 0       | 404         | Could not find an instance with todos/0     |
-      | 100     | 404         | Could not find an instance with todos/100   |
+      | todoId | statusCode | responsePhrase | errorMessage                              |
+      | 0      | 404        | Not Found      | Could not find an instance with todos/0   |
+      | 100    | 404        | Not Found      | Could not find an instance with todos/100 |
 

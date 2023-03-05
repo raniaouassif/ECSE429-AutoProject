@@ -1,28 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: com.ECSE429.BDDTest.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 3, Skipped: 0, Time elapsed: 26.812 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
-Examples.Example #1.1  Time elapsed: 1.554 s  <<< ERROR!
-java.lang.IllegalStateException: closed
-	at okio.RealBufferedSource.select(RealBufferedSource.kt:218)
-	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265)
-	at okhttp3.ResponseBody.string(ResponseBody.kt:187)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.an_error_message_with_status_code_is_returned(TodosStepDefinitions.java:393)
-	at ✽.an error message "Failed Validation: title : can not be empty" with status code "400" is returned(classpath:features/AddTodo.feature:30)
-
-Examples.Example #1.1  Time elapsed: 1.55 s  <<< ERROR!
-java.lang.IllegalStateException: closed
-	at okio.RealBufferedSource.select(RealBufferedSource.kt:218)
-	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265)
-	at okhttp3.ResponseBody.string(ResponseBody.kt:187)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.an_error_message_with_status_code_is_returned(TodosStepDefinitions.java:393)
-	at ✽.an error message "Could not find an instance with todos/0" with status code "404" is returned(classpath:features/GetTodoById.feature:31)
-
-Examples.Example #1.2  Time elapsed: 1.569 s  <<< ERROR!
-java.lang.IllegalStateException: closed
-	at okio.RealBufferedSource.select(RealBufferedSource.kt:218)
-	at okhttp3.internal.Util.readBomAsCharset(Util.kt:265)
-	at okhttp3.ResponseBody.string(ResponseBody.kt:187)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.an_error_message_with_status_code_is_returned(TodosStepDefinitions.java:393)
-	at ✽.an error message "Could not find an instance with todos/100" with status code "404" is returned(classpath:features/GetTodoById.feature:31)
+Tests run: 28, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 43.693 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
+Examples.Example #1.1  Time elapsed: 1.494 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <Bad Request> but was: <OK>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:641)
+	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:31)
 
