@@ -1,4 +1,4 @@
-# ECSE429-AutoProject
+# ECSE429 - Software Validation Project
 Group 29 : Rania Ouassif 
 
 The application under test is a “rest api todo list manager” which may be run as a local host.
