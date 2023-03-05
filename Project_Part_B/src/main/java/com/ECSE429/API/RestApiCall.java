@@ -32,7 +32,7 @@ public class RestApiCall {
     /**
      * Sends a GET request to the specified URL with the given JSON body
      *
-     * @param url         the URL to send the request to
+     * @param url         the endpoint URL to send the request to
      * @param contentType the content type of the request body (json or XML)
      * @return a Response object containing the response from the server, or null if there was an error
      */
@@ -71,7 +71,39 @@ public class RestApiCall {
 
         // Create the request body using the JSON body and content type
         MediaType JSON = MediaType.parse("application/" + contentType + "; charset=utf-8");
+
         RequestBody body = RequestBody.create(JSON, jsonBody.toString());
+
+        Request request = new Request.Builder()
+                .url(url)
+                .addHeader("content-type", "application/" + contentType + "; charset=utf-8")
+                .post(body)
+                .build();
+        try {
+            response = client.newCall(request).execute();
+        } catch (IOException e) {
+            return null;
+        }
+        return response;
+    }
+
+    /**
+     * Sends a POST request to the specified URL with the given STRING body
+     *
+     * @param url         the endpoint URL to send the request to
+     * @param contentType the content type of the request body (json or XML)
+     * @param requestBody the String body of the request
+     * @return a Response object containing the response from the server, or null if there was an error
+     */
+    public Response postRequestString(String url, String contentType, String requestBody) {
+        OkHttpClient client = new OkHttpClient();
+        Response response = null;
+        // Construct the full URL by appending the base URL to the endpoint URL
+        url = baseUrl + url;
+
+        // Create the request body using the JSON body and content type
+        MediaType mediaType = MediaType.parse("application/" + contentType + "; charset=utf-8");
+        RequestBody body = RequestBody.create(mediaType, requestBody);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -89,7 +121,7 @@ public class RestApiCall {
     /**
      * Sends a PUT request to the specified URL with the given JSON body
      *
-     * @param url         the URL to send the request to
+     * @param url         the endpoint URL to send the request to
      * @param contentType the content type of the request body (json or XML)
      * @param jsonBody    the JSON body of the request
      * @return a Response object containing the response from the server, or null if there was an error
@@ -120,7 +152,7 @@ public class RestApiCall {
     /**
      * Sends a DELETE request to the specified URL
      *
-     * @param url         the URL to send the request to
+     * @param url         the endpoint URL to send the request to
      * @param contentType the content type of the request body (json or XML)
      * @return a Response object containing the response from the server, or null if there was an error
      */

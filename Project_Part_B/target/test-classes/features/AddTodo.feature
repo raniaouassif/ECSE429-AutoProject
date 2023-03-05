@@ -34,13 +34,24 @@ Feature: Post Todo
       | todoTitle | statusCode | responsePhrase | errorMessage                                |
       |           | 400        | Bad Request    | Failed Validation: title : can not be empty |
 
-#  Scenario Outline: Create a new todos with invalid field  (Error Flow)
-#    When I add a new todos with title "<todoTitle>" and invalid field "<invalidField>"
-#    Then an error message "<responsePhrase>" is returned
-#    And no todos is created
-#
-#    Examples:
-#      | todoTitle                    | invalidField        | responsePhrase                         |
-#      | Record Unit Test Suite Video | field invalid       | Could not find field: field invalid  |
-#      | Complete quiz 3              | descriptio\n        |
-#      | with empty invalid field     | "title"             |
+  Scenario Outline: Create a new todos with invalid field  (Error Flow)
+    When I add a new todos with title "<todoTitle>" and invalid field "<invalidField>"
+    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
+    And the response body has the error message "<errorMessage>"
+    And no todo is created
+    Examples:
+      | todoTitle                    | invalidField  | statusCode | responsePhrase | errorMessage                         |
+      | Record Unit Test Suite Video | field invalid | 400        | Bad Request    | Could not find field: field invalid  |
+      | Complete quiz 3              | descriptio\n  | 400        | Bad Request    | Could not find field: descriptio\n   |
+
+  Scenario Outline: Create a new todos with duplicate fields  (Error Flow)
+    When I add a new todos with title "<todoTitle>" and duplicate fields "<duplicateField>"
+    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
+    And the response body has the error message "<errorMessage>"
+    And no todo is created
+    Examples:
+      | todoTitle                    | duplicateField  | statusCode | responsePhrase | errorMessage                 |
+      | Record Unit Test Suite Video | title           | 400        | Bad Request    | duplicate key: title         |
+      | Complete quiz 3              | doneStatus      | 400        | Bad Request    | duplicate key: doneStatus    |
+      | Implement StepDefinitions    | description     | 400        | Bad Request    | duplicate key: description   |
+

@@ -3,9 +3,6 @@ package com.ECSE429.BDDTest;
 import com.ECSE429.API.RestApiCall;
 import io.cucumber.java.*;
 
-import okhttp3.Response;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;
 import org.junit.platform.suite.api.SelectClasspathResource;
@@ -13,7 +10,6 @@ import org.junit.platform.suite.api.Suite;
 import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 
 
-@TestMethodOrder(MethodOrderer.Random.class)
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
