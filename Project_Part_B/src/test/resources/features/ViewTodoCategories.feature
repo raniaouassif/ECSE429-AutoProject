@@ -14,8 +14,8 @@ Feature: View Todo Categories Relationship
   Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow)
     Given the todo with id "<todoId>" exists
     When I get the todo's categories with id "<todoId>" using categories endpoint
-    Then a status code "200" with response phrase "OK" is returned
-    And I should see all the todo related categories with ids "<categoriyIds>"
+    Then I should see all the todo related categories with ids "<categoriyIds>"
+    And a status code "200" with response phrase "OK" is returned
     Examples:
       | todoId | categoriyIds |
       | 1      | 1            |
@@ -25,8 +25,8 @@ Feature: View Todo Categories Relationship
   Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow)
     Given the todo with id "<todoId>" exists
     When I get the todo's categories with id "<todoId>" using todo endpoint
-    Then a status code "200" with response phrase "OK" is returned
-    And I should see all the todo related categories with ids "<categoriyIds>"
+    Then I should see all the todo related categories with ids "<categoriyIds>"
+    And a status code "200" with response phrase "OK" is returned
     Examples:
       | todoId | categoriyIds |
       | 1      | 1            |
@@ -38,8 +38,8 @@ Feature: View Todo Categories Relationship
   Scenario Outline: View the todo categories relationship between nonexistent todo and categories using endpoint todos/:id/categories (Error Flow)
     Given the todo with id "<todoId>" does not exist
     When I get the todo's categories with id "<todoId>" using categories endpoint
-    Then a status code "400" with response phrase "Bad Request" is returned
-    And the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null"
+    Then the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null"
+    And a status code "400" with response phrase "Bad Request" is returned
     Examples:
       | todoId |
       | 0      |

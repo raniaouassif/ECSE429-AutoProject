@@ -1,4 +1,4 @@
-Feature: Post Todo
+Feature: Add Todo
   As a user,
   I want to post a todo, so I can manage my work progress.
 
@@ -7,8 +7,8 @@ Feature: Post Todo
 
   Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)
     When I add a new todo with title "<todoTitle>", description "<todoDescription>" and doneStatus "<todoDoneStatus>"
-    Then a status code "201" with response phrase "Created" is returned
-    And I should see one new todo with title "<todoTitle>", description "<todoDescription>" and doneStatus "<todoDoneStatus>" within the application
+    Then I should see one new todo with title "<todoTitle>", description "<todoDescription>" and doneStatus "<todoDoneStatus>" within the application
+    And a status code "201" with response phrase "Created" is returned
     Examples:
       | todoTitle                    | todoDescription      | todoDoneStatus |
       | Record Unit Test Suite Video | For ECSE429 project  | false          |
@@ -18,8 +18,8 @@ Feature: Post Todo
 
   Scenario Outline: Create a new todo with title only (Alternate Flow)
     When I add a new todo with title "<todoTitle>"
-    Then a status code "201" with response phrase "Created" is returned
-    And I should see one new todo with title "<todoTitle>", description "" and doneStatus "false" within the application
+    Then I should see one new todo with title "<todoTitle>", description "" and doneStatus "false" within the application
+    And a status code "201" with response phrase "Created" is returned
     Examples:
       | todoTitle                    |
       | Record Unit Test Suite Video |
@@ -28,15 +28,15 @@ Feature: Post Todo
 
   Scenario: Create a new todo with empty title (Error Flow)
     When I add a new todo with title ""
-    Then a status code "400" with response phrase "Bad Request" is returned
+    Then no todo is created
     And the response body has the error message "Failed Validation: title : can not be empty"
-    And no todo is created
+    And a status code "400" with response phrase "Bad Request" is returned
 
   Scenario Outline: Create a new todos with invalid field  (Error Flow)
     When I add a new todos with title "MyTodo" and invalid field "<invalidField>"
-    Then a status code "400" with response phrase "Bad Request" is returned
-    And the response body has the error message "<errorMessage>"
+    Then the response body has the error message "<errorMessage>"
     And no todo is created
+    And a status code "400" with response phrase "Bad Request" is returned
     Examples:
       | invalidField  | errorMessage                         |
       | field invalid | Could not find field: field invalid  |
@@ -45,12 +45,11 @@ Feature: Post Todo
       | doneeStatus   | Could not find field: doneeStatus    |
       | titl          | Could not find field: titl           |
 
-
   Scenario Outline: Create a new todos with duplicate fields  (Error Flow)
     When I add a new todos with title "MyTodo" and duplicate fields "<duplicateField>"
-    Then a status code "400" with response phrase "Bad Request" is returned
-    And the response body has the error message "<errorMessage>"
+    Then the response body has the error message "<errorMessage>"
     And no todo is created
+    And a status code "400" with response phrase "Bad Request" is returned
     Examples:
       | duplicateField  | errorMessage                 |
       | title           | duplicate key: title         |
@@ -61,9 +60,9 @@ Feature: Post Todo
   # Fails with example =
   Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)
     When I add a new todos with title "MyTodo" with invalid key-value pairs separator "<keyPairSeparator>"
-    Then a status code "400" with response phrase "Bad Request" is returned
+    Then no todo is created
     And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $."
-    And no todo is created
+    And a status code "400" with response phrase "Bad Request" is returned
     Examples:
        | keyPairSeparator |
        | 0                |

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: com.ECSE429.BDDTest.RunCucumberTest
 -------------------------------------------------------------------------------
-Tests run: 60, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 92.923 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
-Examples.Example #1.5  Time elapsed: 1.553 s  <<< FAILURE!
+Tests run: 64, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 99.535 s <<< FAILURE! - in com.ECSE429.BDDTest.RunCucumberTest
+Examples.Example #1.5  Time elapsed: 1.58 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: Created
  instead of : Bad Request ==> expected: <400> but was: <201>
@@ -11,10 +11,10 @@ ERROR: The response phrase is: Created
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
 	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/AddTodo.feature:64)
 
-Examples.Example #1.4  Time elapsed: 1.519 s  <<< FAILURE!
+Examples.Example #1.4  Time elapsed: 1.538 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Not Found ==> expected: <404> but was: <200>
@@ -23,10 +23,10 @@ ERROR: The response phrase is: OK
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:45)
 
-Examples.Example #1.5  Time elapsed: 1.507 s  <<< FAILURE!
+Examples.Example #1.5  Time elapsed: 1.541 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Not Found ==> expected: <404> but was: <200>
@@ -35,10 +35,10 @@ ERROR: The response phrase is: OK
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:45)
 
-Examples.Example #1.1  Time elapsed: 1.553 s  <<< FAILURE!
+Examples.Example #1.1  Time elapsed: 1.548 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Bad Request ==> expected: <400> but was: <200>
@@ -47,6 +47,6 @@ ERROR: The response phrase is: OK
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:38)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:41)
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.ECSE429.BDDTest.RunCucumberTest" time="92.923" tests="60" errors="0" skipped="0" failures="4">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.ECSE429.BDDTest.RunCucumberTest" time="99.535" tests="64" errors="0" skipped="0" failures="4">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk-15.0.1.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/surefire/surefirebooter-20230305200313205_3.jar /Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/surefire 2023-03-05T20-03-12_943-jvmRun1 surefire-20230305200313205_1tmp surefire_0-20230305200313205_2tmp"/>
+    <property name="sun.java.command" value="/Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/surefire/surefirebooter-20230305213638281_3.jar /Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/surefire 2023-03-05T21-36-37_842-jvmRun1 surefire-20230305213638281_1tmp surefire_0-20230305213638281_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/test-classes:/Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/classes:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-java/7.11.1/cucumber-java-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-core/7.11.1/cucumber-core-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-gherkin/7.11.1/cucumber-gherkin-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-gherkin-messages/7.11.1/cucumber-gherkin-messages-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/gherkin/26.0.3/gherkin-26.0.3.jar:/Users/raniaouassif/.m2/repository/io/cucumber/messages/21.0.1/messages-21.0.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/tag-expressions/5.0.1/tag-expressions-5.0.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-expressions/16.1.2/cucumber-expressions-16.1.2.jar:/Users/raniaouassif/.m2/repository/io/cucumber/datatable/7.11.1/datatable-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-plugin/7.11.1/cucumber-plugin-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/docstring/7.11.1/docstring-7.11.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/html-formatter/20.2.1/html-formatter-20.2.1.jar:/Users/raniaouassif/.m2/repository/io/cucumber/junit-xml-formatter/0.1.0/junit-xml-formatter-0.1.0.jar:/Users/raniaouassif/.m2/repository/io/cucumber/ci-environment/9.1.0/ci-environment-9.1.0.jar:/Users/raniaouassif/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/raniaouassif/.m2/repository/io/cucumber/cucumber-junit-platform-engine/7.11.1/cucumber-junit-platform-engine-7.11.1.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-suite/1.9.2/junit-platform-suite-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-suite-api/1.9.2/junit-platform-suite-api-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-suite-engine/1.9.2/junit-platform-suite-engine-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-suite-commons/1.9.2/junit-platform-suite-commons-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/jupiter/junit-jupiter/5.9.2/junit-jupiter-5.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/Users/raniaouassif/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/Users/raniaouassif/.m2/repository/org/json/json/20220924/json-20220924.jar:/Users/raniaouassif/.m2/repository/com/squareup/okhttp3/okhttp/4.9.3/okhttp-4.9.3.jar:/Users/raniaouassif/.m2/repository/com/squareup/okio/okio/2.8.0/okio-2.8.0.jar:/Users/raniaouassif/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib-common/1.4.0/kotlin-stdlib-common-1.4.0.jar:/Users/raniaouassif/.m2/repository/org/jetbrains/kotlin/kotlin-stdlib/1.4.10/kotlin-stdlib-1.4.10.jar:/Users/raniaouassif/.m2/repository/org/jetbrains/annotations/13.0/annotations-13.0.jar:"/>
@@ -29,7 +29,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="surefire.real.class.path" value="/Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/surefire/surefirebooter-20230305200313205_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/target/surefire/surefirebooter-20230305213638281_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="15.0.1+9-18"/>
@@ -54,7 +54,7 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="Example #1.1" classname="Examples" time="1.925">
+  <testcase name="Example #1.1" classname="Examples" time="1.126">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                                                   &amp#27;[90m# features/AddTodo.feature:14&amp#27;[0m
 Setting up environment
@@ -65,7 +65,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.546">
+  <testcase name="Example #1.1" classname="Examples" time="1.861">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title only (Alternate Flow)                                                                    &amp#27;[90m# features/AddTodo.feature:25&amp#27;[0m
 Setting up environment
@@ -76,7 +76,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.515">
+  <testcase name="Example #1.1" classname="Examples" time="1.648">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with invalid field  (Error Flow)               &amp#27;[90m# features/AddTodo.feature:42&amp#27;[0m
 Setting up environment
@@ -88,7 +88,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.545">
+  <testcase name="Example #1.1" classname="Examples" time="1.549">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with duplicate fields  (Error Flow)  &amp#27;[90m# features/AddTodo.feature:56&amp#27;[0m
 Setting up environment
@@ -106,7 +106,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.535">
+  <testcase name="Example #1.1" classname="Examples" time="1.523">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:69&amp#27;[0m
 Setting up environment
@@ -122,7 +122,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.543">
+  <testcase name="Example #1.1" classname="Examples" time="1.528">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and project by id in endpoint (Normal Flow)       &amp#27;[90m# features/DeleteTasksofTodo.feature:18&amp#27;[0m
 Setting up environment
@@ -136,7 +136,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.538">
+  <testcase name="Example #1.1" classname="Examples" time="1.567">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and project using put method (Alternate Flow) &amp#27;[90m# features/DeleteTasksofTodo.feature:30&amp#27;[0m
 Setting up environment
@@ -150,7 +150,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.546">
+  <testcase name="Example #1.1" classname="Examples" time="1.554">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and project which has already been deleted (Error Flow)       &amp#27;[90m# features/DeleteTasksofTodo.feature:45&amp#27;[0m
 Setting up environment
@@ -167,7 +167,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.536">
+  <testcase name="Example #1.1" classname="Examples" time="1.533">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between nonexistent todo and project by id in endpoint (Error Flow)                                                                &amp#27;[90m# features/DeleteTasksofTodo.feature:56&amp#27;[0m
 Setting up environment
@@ -180,7 +180,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.537">
+  <testcase name="Example #1.1" classname="Examples" time="1.536">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and nonexistent project by id in endpoint (Error Flow)          &amp#27;[90m# features/DeleteTasksofTodo.feature:68&amp#27;[0m
 Setting up environment
@@ -193,11 +193,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.526">
+  <testcase name="Example #1.1" classname="Examples" time="1.549">
     <system-out><![CDATA[
-Scenario Outline: Get a todo by id in endpoint (Normal Flow)     &amp#27;[90m# features/GetTodoById.feature:15&amp#27;[0m
+Scenario Outline: Get a todo by id in endpoint (Normal Flow)     &amp#27;[90m# features/GetTodoById.feature:16&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                   &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
 {"todos":[{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"1","categories":[{"id":"1"}],"title":"scan paperwork"}]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -206,11 +207,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.528">
+  <testcase name="Example #1.1" classname="Examples" time="1.531">
     <system-out><![CDATA[
-Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) &amp#27;[90m# features/GetTodoById.feature:25&amp#27;[0m
+Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) &amp#27;[90m# features/GetTodoById.feature:27&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                         &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI filter the endpoint to get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_filter_the_endpoint_to_get_the_todo_with_id(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
@@ -218,11 +220,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.53">
+  <testcase name="Example #1.1" classname="Examples" time="1.551">
     <system-out><![CDATA[
-Scenario Outline: Get a nonexistent todo (Error Flow)                                   &amp#27;[90m# features/GetTodoById.feature:36&amp#27;[0m
+Scenario Outline: Get a nonexistent todo (Error Flow)                                   &amp#27;[90m# features/GetTodoById.feature:39&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                          &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"0"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
 {"errorMessages":["Could not find an instance with todos/0"]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"0"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -232,11 +235,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.552">
+  <testcase name="Example #1.1" classname="Examples" time="1.546">
     <system-out><![CDATA[
-Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:47&amp#27;[0m
+Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:50&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                          &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"a"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
 {"errorMessages":["Could not find an instance with todos/a"]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"a"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -246,7 +250,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.53">
+  <testcase name="Example #1.1" classname="Examples" time="1.536">
     <system-out><![CDATA[
 Scenario Outline: Create a categories relationship between todo and category instance by id in endpoint (Normal Flow) &amp#27;[90m# features/PostTodoCategory.feature:18&amp#27;[0m
 Setting up environment
@@ -260,7 +264,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.557">
+  <testcase name="Example #1.1" classname="Examples" time="1.539">
     <system-out><![CDATA[
 Scenario Outline: Create a categories relationship between todo and category instance using put method (Normal Flow) &amp#27;[90m# features/PostTodoCategory.feature:32&amp#27;[0m
 Setting up environment
@@ -274,7 +278,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.541">
+  <testcase name="Example #1.1" classname="Examples" time="1.538">
     <system-out><![CDATA[
 Scenario Outline: Create a relationship between nonexistent todo and category (Error Flow)                      &amp#27;[90m# features/PostTodoCategory.feature:44&amp#27;[0m
 Setting up environment
@@ -287,16 +291,14 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.526">
+  <testcase name="Example #1.1" classname="Examples" time="1.59">
     <system-out><![CDATA[
 Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow) &amp#27;[90m# features/ViewTodoCategories.feature:21&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using categories endpoint&amp#27;[0m                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m                                                                   &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
@@ -304,24 +306,22 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.549">
+  <testcase name="Example #1.1" classname="Examples" time="1.534">
     <system-out><![CDATA[
-Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) &amp#27;[90m# features/ViewTodoCategories.feature:31&amp#27;[0m
+Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) &amp#27;[90m# features/ViewTodoCategories.feature:32&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                 &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using todo endpoint&amp#27;[0m                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_through_todo_categories_field(java.lang.String)&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using todo endpoint&amp#27;[0m                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_todo_endpoint(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m                                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
   &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m                                                                 &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.1" classname="Examples" time="1.553">
+  <testcase name="Example #1.1" classname="Examples" time="1.548">
     <failure message="ERROR: The response phrase is: OK&#10; instead of : Bad Request ==&gt; expected: &lt;400&gt; but was: &lt;200&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Bad Request ==> expected: <400> but was: <200>
@@ -330,18 +330,16 @@ ERROR: The response phrase is: OK
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:38)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:41)
 ]]></failure>
     <system-out><![CDATA[
-Scenario Outline: View the todo categories relationship between nonexistent todo and categories using endpoint todos/:id/categories (Error Flow)                                   &amp#27;[90m# features/ViewTodoCategories.feature:42&amp#27;[0m
+Scenario Outline: View the todo categories relationship between nonexistent todo and categories using endpoint todos/:id/categories (Error Flow)                                   &amp#27;[90m# features/ViewTodoCategories.feature:45&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                                                                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                                                                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"0"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                                                                                                                        &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"0"&amp#27;[0m&amp#27;[32m using categories endpoint&amp#27;[0m                                                                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)&amp#27;[0m
   &amp#27;[31mThen &amp#27;[0m&amp#27;[31ma status code &amp#27;[0m&amp#27;[31m&amp#27;[1m"400"&amp#27;[0m&amp#27;[31m with response phrase &amp#27;[0m&amp#27;[31m&amp#27;[1m"Bad Request"&amp#27;[0m&amp#27;[31m is returned&amp#27;[0m                                                                                                          &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
@@ -352,14 +350,14 @@ Setting up environment
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:38)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/ViewTodoCategories.feature:41)
 &amp#27;[0m
   &amp#27;[36mAnd &amp#27;[0m&amp#27;[36mthe response body has the error message &amp#27;[0m&amp#27;[36m&amp#27;[1m"Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null"&amp#27;[0m &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)&amp#27;[0m
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.544">
+  <testcase name="Example #1.2" classname="Examples" time="1.591">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                             &amp#27;[90m# features/AddTodo.feature:15&amp#27;[0m
 Setting up environment
@@ -370,7 +368,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.53">
+  <testcase name="Example #1.2" classname="Examples" time="1.744">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title only (Alternate Flow)                                                       &amp#27;[90m# features/AddTodo.feature:26&amp#27;[0m
 Setting up environment
@@ -381,7 +379,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.56">
+  <testcase name="Example #1.2" classname="Examples" time="1.534">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with invalid field  (Error Flow)             &amp#27;[90m# features/AddTodo.feature:43&amp#27;[0m
 Setting up environment
@@ -395,7 +393,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.542">
+  <testcase name="Example #1.2" classname="Examples" time="1.544">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with duplicate fields  (Error Flow)       &amp#27;[90m# features/AddTodo.feature:57&amp#27;[0m
 Setting up environment
@@ -413,7 +411,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.534">
+  <testcase name="Example #1.2" classname="Examples" time="1.536">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:70&amp#27;[0m
 Setting up environment
@@ -429,7 +427,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.524">
+  <testcase name="Example #1.2" classname="Examples" time="1.511">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and project by id in endpoint (Normal Flow)       &amp#27;[90m# features/DeleteTasksofTodo.feature:19&amp#27;[0m
 Setting up environment
@@ -443,7 +441,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.546">
+  <testcase name="Example #1.2" classname="Examples" time="1.526">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and project using put method (Alternate Flow) &amp#27;[90m# features/DeleteTasksofTodo.feature:31&amp#27;[0m
 Setting up environment
@@ -457,7 +455,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.522">
+  <testcase name="Example #1.2" classname="Examples" time="1.553">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and project which has already been deleted (Error Flow)       &amp#27;[90m# features/DeleteTasksofTodo.feature:46&amp#27;[0m
 Setting up environment
@@ -474,7 +472,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.524">
+  <testcase name="Example #1.2" classname="Examples" time="1.538">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between nonexistent todo and project by id in endpoint (Error Flow)                                                                &amp#27;[90m# features/DeleteTasksofTodo.feature:57&amp#27;[0m
 Setting up environment
@@ -487,7 +485,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.527">
+  <testcase name="Example #1.2" classname="Examples" time="1.529">
     <system-out><![CDATA[
 Scenario Outline: Delete a tasksof relationship between todo and nonexistent project by id in endpoint (Error Flow)        &amp#27;[90m# features/DeleteTasksofTodo.feature:69&amp#27;[0m
 Setting up environment
@@ -500,11 +498,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.514">
+  <testcase name="Example #1.2" classname="Examples" time="1.544">
     <system-out><![CDATA[
-Scenario Outline: Get a todo by id in endpoint (Normal Flow)     &amp#27;[90m# features/GetTodoById.feature:16&amp#27;[0m
+Scenario Outline: Get a todo by id in endpoint (Normal Flow)     &amp#27;[90m# features/GetTodoById.feature:17&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                   &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
 {"todos":[{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"2","title":"file paperwork"}]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -513,11 +512,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.526">
+  <testcase name="Example #1.2" classname="Examples" time="1.539">
     <system-out><![CDATA[
-Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) &amp#27;[90m# features/GetTodoById.feature:26&amp#27;[0m
+Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) &amp#27;[90m# features/GetTodoById.feature:28&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                         &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI filter the endpoint to get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_filter_the_endpoint_to_get_the_todo_with_id(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
@@ -525,11 +525,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.521">
+  <testcase name="Example #1.2" classname="Examples" time="1.537">
     <system-out><![CDATA[
-Scenario Outline: Get a nonexistent todo (Error Flow)                                     &amp#27;[90m# features/GetTodoById.feature:37&amp#27;[0m
+Scenario Outline: Get a nonexistent todo (Error Flow)                                     &amp#27;[90m# features/GetTodoById.feature:40&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"100"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
 {"errorMessages":["Could not find an instance with todos/100"]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"100"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -539,11 +540,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.595">
+  <testcase name="Example #1.2" classname="Examples" time="1.553">
     <system-out><![CDATA[
-Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:48&amp#27;[0m
+Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:51&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                          &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"-"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
 {"errorMessages":["Could not find an instance with todos/-"]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"-"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -553,7 +555,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.543">
+  <testcase name="Example #1.2" classname="Examples" time="1.521">
     <system-out><![CDATA[
 Scenario Outline: Create a categories relationship between todo and category instance by id in endpoint (Normal Flow) &amp#27;[90m# features/PostTodoCategory.feature:19&amp#27;[0m
 Setting up environment
@@ -567,7 +569,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.551">
+  <testcase name="Example #1.2" classname="Examples" time="1.533">
     <system-out><![CDATA[
 Scenario Outline: Create a categories relationship between todo and category instance using put method (Normal Flow) &amp#27;[90m# features/PostTodoCategory.feature:33&amp#27;[0m
 Setting up environment
@@ -581,7 +583,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.516">
+  <testcase name="Example #1.2" classname="Examples" time="1.535">
     <system-out><![CDATA[
 Scenario Outline: Create a relationship between nonexistent todo and category (Error Flow)                        &amp#27;[90m# features/PostTodoCategory.feature:45&amp#27;[0m
 Setting up environment
@@ -594,41 +596,37 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.616">
+  <testcase name="Example #1.2" classname="Examples" time="1.546">
     <system-out><![CDATA[
 Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow) &amp#27;[90m# features/ViewTodoCategories.feature:22&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using categories endpoint&amp#27;[0m                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m                                                                   &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m"1,2"&amp#27;[0m                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m""&amp#27;[0m                                                                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.2" classname="Examples" time="1.544">
+  <testcase name="Example #1.2" classname="Examples" time="1.562">
     <system-out><![CDATA[
-Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) &amp#27;[90m# features/ViewTodoCategories.feature:32&amp#27;[0m
+Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) &amp#27;[90m# features/ViewTodoCategories.feature:33&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mthe category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                 &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
-  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using todo endpoint&amp#27;[0m                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_through_todo_categories_field(java.lang.String)&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using todo endpoint&amp#27;[0m                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_todo_endpoint(java.lang.String)&amp#27;[0m
   &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m                                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
-  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m"1,2"&amp#27;[0m                                                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m""&amp#27;[0m                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.554">
+  <testcase name="Example #1.3" classname="Examples" time="1.647">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                  &amp#27;[90m# features/AddTodo.feature:16&amp#27;[0m
 Setting up environment
@@ -639,7 +637,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.525">
+  <testcase name="Example #1.3" classname="Examples" time="1.618">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title only (Alternate Flow)                                                       &amp#27;[90m# features/AddTodo.feature:27&amp#27;[0m
 Setting up environment
@@ -650,7 +648,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.534">
+  <testcase name="Example #1.3" classname="Examples" time="1.535">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with invalid field  (Error Flow)             &amp#27;[90m# features/AddTodo.feature:44&amp#27;[0m
 Setting up environment
@@ -662,7 +660,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.538">
+  <testcase name="Example #1.3" classname="Examples" time="1.567">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with duplicate fields  (Error Flow)        &amp#27;[90m# features/AddTodo.feature:58&amp#27;[0m
 Setting up environment
@@ -680,7 +678,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.538">
+  <testcase name="Example #1.3" classname="Examples" time="1.551">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:71&amp#27;[0m
 Setting up environment
@@ -696,11 +694,39 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.53">
+  <testcase name="Example #1.3" classname="Examples" time="1.542">
     <system-out><![CDATA[
-Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:49&amp#27;[0m
+Scenario Outline: Get a todo by id in endpoint (Normal Flow)     &amp#27;[90m# features/GetTodoById.feature:18&amp#27;[0m
+Setting up environment
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                   &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
+{"todos":[{"doneStatus":"false","description":"","id":"3","title":"New Todo"}]}
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see a response of one todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)&amp#27;[0m
+Shutdown system
+]]></system-out>
+  </testcase>
+  <testcase name="Example #1.3" classname="Examples" time="1.542">
+    <system-out><![CDATA[
+Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) &amp#27;[90m# features/GetTodoById.feature:29&amp#27;[0m
+Setting up environment
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                         &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI filter the endpoint to get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_filter_the_endpoint_to_get_the_todo_with_id(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see a response of one todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)&amp#27;[0m
+Shutdown system
+]]></system-out>
+  </testcase>
+  <testcase name="Example #1.3" classname="Examples" time="1.56">
+    <system-out><![CDATA[
+Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:52&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                          &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"*"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
 {"errorMessages":["Could not find an instance with todos/*"]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"*"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -710,7 +736,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.509">
+  <testcase name="Example #1.3" classname="Examples" time="1.54">
     <system-out><![CDATA[
 Scenario Outline: Create a categories relationship between todo and category instance by id in endpoint (Normal Flow) &amp#27;[90m# features/PostTodoCategory.feature:20&amp#27;[0m
 Setting up environment
@@ -724,7 +750,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.3" classname="Examples" time="1.542">
+  <testcase name="Example #1.3" classname="Examples" time="1.533">
     <system-out><![CDATA[
 Scenario Outline: Create a categories relationship between todo and category instance using put method (Normal Flow) &amp#27;[90m# features/PostTodoCategory.feature:34&amp#27;[0m
 Setting up environment
@@ -738,7 +764,37 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.4" classname="Examples" time="1.578">
+  <testcase name="Example #1.3" classname="Examples" time="1.566">
+    <system-out><![CDATA[
+Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow) &amp#27;[90m# features/ViewTodoCategories.feature:23&amp#27;[0m
+Setting up environment
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                     &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m using categories endpoint&amp#27;[0m                                                           &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m                                                                   &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m"1,2"&amp#27;[0m                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
+Shutdown system
+]]></system-out>
+  </testcase>
+  <testcase name="Example #1.3" classname="Examples" time="1.55">
+    <system-out><![CDATA[
+Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) &amp#27;[90m# features/ViewTodoCategories.feature:34&amp#27;[0m
+Setting up environment
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                                                                  &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"My New Todo"&amp#27;[0m                                                                                 &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"1"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a relationship between todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m and category with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"2"&amp#27;[0m&amp#27;[32m using id in endpoint&amp#27;[0m                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m exists&amp#27;[0m                                                                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo's categories with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"3"&amp#27;[0m&amp#27;[32m using todo endpoint&amp#27;[0m                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_todo_endpoint(java.lang.String)&amp#27;[0m
+  &amp#27;[32mThen &amp#27;[0m&amp#27;[32ma status code &amp#27;[0m&amp#27;[32m&amp#27;[1m"200"&amp#27;[0m&amp#27;[32m with response phrase &amp#27;[0m&amp#27;[32m&amp#27;[1m"OK"&amp#27;[0m&amp#27;[32m is returned&amp#27;[0m                                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI should see all the todo related categories with ids &amp#27;[0m&amp#27;[32m&amp#27;[1m"1,2"&amp#27;[0m                                                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)&amp#27;[0m
+Shutdown system
+]]></system-out>
+  </testcase>
+  <testcase name="Example #1.4" classname="Examples" time="1.565">
     <system-out><![CDATA[
 Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                   &amp#27;[90m# features/AddTodo.feature:17&amp#27;[0m
 Setting up environment
@@ -749,7 +805,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.4" classname="Examples" time="1.542">
+  <testcase name="Example #1.4" classname="Examples" time="1.623">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with invalid field  (Error Flow)             &amp#27;[90m# features/AddTodo.feature:45&amp#27;[0m
 Setting up environment
@@ -761,7 +817,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.4" classname="Examples" time="1.527">
+  <testcase name="Example #1.4" classname="Examples" time="1.549">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:72&amp#27;[0m
 Setting up environment
@@ -777,7 +833,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.4" classname="Examples" time="1.519">
+  <testcase name="Example #1.4" classname="Examples" time="1.538">
     <failure message="ERROR: The response phrase is: OK&#10; instead of : Not Found ==&gt; expected: &lt;404&gt; but was: &lt;200&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Not Found ==> expected: <404> but was: <200>
@@ -786,15 +842,16 @@ ERROR: The response phrase is: OK
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:45)
 ]]></failure>
     <system-out><![CDATA[
-Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:50&amp#27;[0m
+Scenario Outline: Get a todo with invalid id (Error Flow)                               &amp#27;[90m# features/GetTodoById.feature:53&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                          &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                            &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m";"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
-{"todos":[{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"1","categories":[{"id":"1"}],"title":"scan paperwork"},{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"2","title":"file paperwork"}]}
+{"todos":[{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"2","title":"file paperwork"},{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"1","categories":[{"id":"1"}],"title":"scan paperwork"},{"doneStatus":"false","description":"","id":"3","title":"New Todo"}]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m";"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
   &amp#27;[31mThen &amp#27;[0m&amp#27;[31ma status code &amp#27;[0m&amp#27;[31m&amp#27;[1m"404"&amp#27;[0m&amp#27;[31m with response phrase &amp#27;[0m&amp#27;[31m&amp#27;[1m"Not Found"&amp#27;[0m&amp#27;[31m is returned&amp#27;[0m                 &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
       &amp#27;[31morg.opentest4j.AssertionFailedError: ERROR: The response phrase is: OK
@@ -804,15 +861,15 @@ Setting up environment
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:45)
 &amp#27;[0m
   &amp#27;[36mAnd &amp#27;[0m&amp#27;[36mthe response body has the error message &amp#27;[0m&amp#27;[36m&amp#27;[1m"Could not find an instance with todos/;"&amp#27;[0m &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)&amp#27;[0m
   &amp#27;[36mAnd &amp#27;[0m&amp#27;[36mno todo is returned&amp#27;[0m                                                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()&amp#27;[0m
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.5" classname="Examples" time="1.55">
+  <testcase name="Example #1.5" classname="Examples" time="1.501">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with invalid field  (Error Flow)      &amp#27;[90m# features/AddTodo.feature:46&amp#27;[0m
 Setting up environment
@@ -824,7 +881,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.5" classname="Examples" time="1.553">
+  <testcase name="Example #1.5" classname="Examples" time="1.58">
     <failure message="ERROR: The response phrase is: Created&#10; instead of : Bad Request ==&gt; expected: &lt;400&gt; but was: &lt;201&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: Created
  instead of : Bad Request ==> expected: <400> but was: <201>
@@ -833,7 +890,7 @@ ERROR: The response phrase is: Created
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
 	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/AddTodo.feature:64)
 ]]></failure>
     <system-out><![CDATA[
@@ -853,7 +910,7 @@ Setting up environment
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
 	at ✽.a status code "400" with response phrase "Bad Request" is returned(classpath:features/AddTodo.feature:64)
 &amp#27;[0m
   &amp#27;[36mAnd &amp#27;[0m&amp#27;[36mthe response body has the error message &amp#27;[0m&amp#27;[36m&amp#27;[1m"com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $."&amp#27;[0m &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)&amp#27;[0m
@@ -861,7 +918,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.5" classname="Examples" time="1.507">
+  <testcase name="Example #1.5" classname="Examples" time="1.541">
     <failure message="ERROR: The response phrase is: OK&#10; instead of : Not Found ==&gt; expected: &lt;404&gt; but was: &lt;200&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: 
 ERROR: The response phrase is: OK
  instead of : Not Found ==> expected: <404> but was: <200>
@@ -870,15 +927,16 @@ ERROR: The response phrase is: OK
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:45)
 ]]></failure>
     <system-out><![CDATA[
-Scenario Outline: Get a todo with invalid id (Error Flow)                                    &amp#27;[90m# features/GetTodoById.feature:51&amp#27;[0m
+Scenario Outline: Get a todo with invalid id (Error Flow)                                    &amp#27;[90m# features/GetTodoById.feature:54&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                               &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                                 &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m";;;;;;"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
-{"todos":[{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"2","title":"file paperwork"},{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"1","categories":[{"id":"1"}],"title":"scan paperwork"}]}
+{"todos":[{"doneStatus":"false","description":"","id":"3","title":"New Todo"},{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"1","categories":[{"id":"1"}],"title":"scan paperwork"},{"doneStatus":"false","description":"","tasksof":[{"id":"1"}],"id":"2","title":"file paperwork"}]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m";;;;;;"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
   &amp#27;[31mThen &amp#27;[0m&amp#27;[31ma status code &amp#27;[0m&amp#27;[31m&amp#27;[1m"404"&amp#27;[0m&amp#27;[31m with response phrase &amp#27;[0m&amp#27;[31m&amp#27;[1m"Not Found"&amp#27;[0m&amp#27;[31m is returned&amp#27;[0m                      &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)&amp#27;[0m
       &amp#27;[31morg.opentest4j.AssertionFailedError: ERROR: The response phrase is: OK
@@ -888,15 +946,15 @@ Setting up environment
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
 	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
 	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
-	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:757)
-	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:42)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(TodosStepDefinitions.java:760)
+	at ✽.a status code "404" with response phrase "Not Found" is returned(classpath:features/GetTodoById.feature:45)
 &amp#27;[0m
   &amp#27;[36mAnd &amp#27;[0m&amp#27;[36mthe response body has the error message &amp#27;[0m&amp#27;[36m&amp#27;[1m"Could not find an instance with todos/;;;;;;"&amp#27;[0m &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)&amp#27;[0m
   &amp#27;[36mAnd &amp#27;[0m&amp#27;[36mno todo is returned&amp#27;[0m                                                                    &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()&amp#27;[0m
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.6" classname="Examples" time="1.546">
+  <testcase name="Example #1.6" classname="Examples" time="1.548">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:74&amp#27;[0m
 Setting up environment
@@ -912,11 +970,12 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.6" classname="Examples" time="1.571">
+  <testcase name="Example #1.6" classname="Examples" time="1.549">
     <system-out><![CDATA[
-Scenario Outline: Get a todo with invalid id (Error Flow)                                   &amp#27;[90m# features/GetTodoById.feature:52&amp#27;[0m
+Scenario Outline: Get a todo with invalid id (Error Flow)                                   &amp#27;[90m# features/GetTodoById.feature:55&amp#27;[0m
 Setting up environment
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe service is running&amp#27;[0m                                                              &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mI add a new todo with title &amp#27;[0m&amp#27;[32m&amp#27;[1m"New Todo"&amp#27;[0m                                                &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)&amp#27;[0m
   &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mthe todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"hello"&amp#27;[0m&amp#27;[32m does not exist&amp#27;[0m                                             &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)&amp#27;[0m
 {"errorMessages":["Could not find an instance with todos/hello"]}
   &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mI get the todo with id &amp#27;[0m&amp#27;[32m&amp#27;[1m"hello"&amp#27;[0m                                                       &amp#27;[90m# com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)&amp#27;[0m
@@ -926,7 +985,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.7" classname="Examples" time="1.541">
+  <testcase name="Example #1.7" classname="Examples" time="1.555">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:75&amp#27;[0m
 Setting up environment
@@ -942,7 +1001,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.8" classname="Examples" time="1.538">
+  <testcase name="Example #1.8" classname="Examples" time="1.55">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:76&amp#27;[0m
 Setting up environment
@@ -958,7 +1017,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Example #1.9" classname="Examples" time="1.546">
+  <testcase name="Example #1.9" classname="Examples" time="1.528">
     <system-out><![CDATA[
 Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                &amp#27;[90m# features/AddTodo.feature:77&amp#27;[0m
 Setting up environment
@@ -974,7 +1033,7 @@ Setting up environment
 Shutdown system
 ]]></system-out>
   </testcase>
-  <testcase name="Create a new todo with empty title (Error Flow)" classname="Post Todo" time="1.544">
+  <testcase name="Create a new todo with empty title (Error Flow)" classname="Post Todo" time="1.595">
     <system-out><![CDATA[
 Scenario: Create a new todo with empty title (Error Flow)                                   &amp#27;[90m# features/AddTodo.feature:29&amp#27;[0m
 Setting up environment

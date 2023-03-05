@@ -15,8 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TodosStepDefinitions {
 
@@ -295,7 +294,7 @@ public class TodosStepDefinitions {
         }
 
         // Assert that the specified todos exists
-        assertEquals(true, todoExists);
+        assertTrue(todoExists, "ERROR: The todo does not exist in the system.");
     }
 
     @Given("the todo with id {string} does not exist")
@@ -328,7 +327,7 @@ public class TodosStepDefinitions {
             e.printStackTrace();
         }
         // Assert that the specified todos does not exist
-        assertEquals(false, todoExists);
+        assertFalse(todoExists, "ERROR: The todo exists in the system");
     }
 
     @When("I get the todo with id {string}")
@@ -363,20 +362,20 @@ public class TodosStepDefinitions {
     @Then("I should see a response of one todo with id {string}")
     public void i_should_see_a_response_of_one_todo_with_id(String todoId) {
         //Assert that the length of the responseBody is 1 (only 1 todos is returned)
-        assertEquals(1, responseBody.getJSONArray("todos").length());
+        assertEquals(1, responseBody.getJSONArray("todos").length(), "ERROR: Only one todo should be returned");
 
         JSONArray todosArray = responseBody.getJSONArray("todos");
         JSONObject returnedTodo = todosArray.getJSONObject(0);
         String returnedId = returnedTodo.getString("id");
 
         //Assert that the returnedId is the same as todoId
-        assertEquals(todoId, returnedId);
+        assertEquals(todoId, returnedId, "ERROR: the returned todo does not have the expected id.");
     }
 
     @Then("no todo is returned")
     public void no_todo_is_returned() {
         // Assert that the "todos" field does not exist in the response body
-        assertTrue(responseBody.isNull("todos"));
+        assertTrue(responseBody.isNull("todos"), "ERROR: The response body contains a todo.");
     }
 
 
@@ -411,7 +410,7 @@ public class TodosStepDefinitions {
             e.printStackTrace();
         }
         // Assert that the specified category exists
-        assertEquals(true, categoryExists);
+        assertTrue(categoryExists, "ERROR: The Category with id " + categoryId + " does not exist.");
     }
 
     @Given("there are no relationship between todo with id {string} and category with id {string}")
@@ -442,7 +441,7 @@ public class TodosStepDefinitions {
         }
 
         // Assert that the specified category does not exist for given todoId
-        assertEquals(false, categoryExists);
+        assertFalse(categoryExists, "ERROR: The category with id " + categoryId + " exists in the system.");
     }
 
     @When("I add a relationship between todo with id {string} and category with id {string} using id in endpoint")
@@ -519,7 +518,7 @@ public class TodosStepDefinitions {
             e.printStackTrace();
         }
         // Assert that the specified category now exists for given todoId
-        assertEquals(true, categoryExists);
+        assertTrue(categoryExists, "ERROR: The category with id " + categoryId + " has not been successfully created. It does not exist in the system.");
     }
 
     // DELETE TASKSOF TODOS
@@ -553,7 +552,7 @@ public class TodosStepDefinitions {
             e.printStackTrace();
         }
         // Assert that the specified project exists
-        assertEquals(true, projectExists);
+        assertTrue( projectExists, "ERROR: The project with id " + projectId + " does not exist in the system.");
     }
 
     @Given("there is a tasksof relationship between todo with id {string} and project with id {string}")
@@ -586,8 +585,9 @@ public class TodosStepDefinitions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Assert that the specified category does not exist for given todoId
-        assertEquals(true, tasksofExists);
+        // Assert that the specified tasksof exists for given todoId
+        assertTrue( tasksofExists, "ERROR: There are no tasksof relationship for the todo with id " + todoId
+                                        + " and the project with id " + projectId);
     }
 
     @Given("the project with id {string} does not exist")
@@ -619,8 +619,8 @@ public class TodosStepDefinitions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Assert that the specified project exists
-        assertEquals(false, projectExists);
+        // Assert that the specified project does not exists
+        assertFalse( projectExists, "ERROR: The project with id "+ projectId + " exists in the system.");
     }
 
     @When("I delete the tasksof relationship between todo with id {string} and project with id {string} using id in endpoint")
@@ -681,8 +681,8 @@ public class TodosStepDefinitions {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // Assert that the specified category does not exist for given todoId
-        assertEquals(false, tasksofExists);
+        // Assert that the specified tasksof does not exist
+        assertFalse( tasksofExists, "ERROR: The tasksof relationship exists between todo with id " + todoId + " and project with id" + projectId);
     }
 
     // VIEW TODOS CATEGORIES RELATIONSHIP
@@ -751,7 +751,7 @@ public class TodosStepDefinitions {
         Collections.sort(expectedCategoriesIds);
         Collections.sort(todoCategoriesIds);
 
-        assertEquals(expectedCategoriesIds,todoCategoriesIds);
+        assertEquals(expectedCategoriesIds,todoCategoriesIds, "ERROR: The expected categories do not match the returned categories");
     }
 
     // CODES AND MESSAGES
@@ -760,7 +760,7 @@ public class TodosStepDefinitions {
         assertEquals(Integer.parseInt(statusCode), response.code(),
                 "ERROR: The response phrase is: " + response.message() +
                         "\n instead of : " + responsePhrase );
-        assertEquals(responsePhrase, response.message() );
+        assertEquals(responsePhrase, response.message() , "ERROR: The actual response phrase does not match the expected response phrase.");
     }
 
     @Then("the response body has the error message {string}")
@@ -770,6 +770,6 @@ public class TodosStepDefinitions {
 
         JSONArray errorMessages = responseBody.getJSONArray("errorMessages");
         String responseErrorMessage = errorMessages.getString(0);
-        assertEquals(errorMessage, responseErrorMessage);
+        assertEquals(errorMessage, responseErrorMessage, "ERROR: The actual error message does not match the expected error message.");
     }
 }
