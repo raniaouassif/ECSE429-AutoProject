@@ -202,6 +202,49 @@ public class TodosStepDefinitions {
         }
     }
 
+    @When("I add a new todos with title {string} with invalid key-value pairs separator {string}")
+    public void i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(String todoTitle, String keyPairSeparator) {
+        // Create a RestApiCall object to handle the API request
+        RestApiCall call = new RestApiCall();
+
+        // Create JSONObject to store response body of the two getRequest() API Calls
+        JSONObject getTodosResponseBody = null;
+
+        // First API call to retrieve the current list of todos
+        Response getPreviousTodos = call.getRequest("todos", "json");
+        try {
+            getTodosResponseBody = new JSONObject(getPreviousTodos.body().string());
+            previousTodosCount = getTodosResponseBody.getJSONArray("todos").length();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Create a JSON object with a "title" field containing the specified value
+        // And using the specified key pair separator
+        String requestBody = "{\n" +
+                " \"title\"" + keyPairSeparator + "\"" + todoTitle + "\"\n}";
+
+        System.out.println(requestBody);
+        // Second API call to add a new todos using a POST request
+        response = call.postRequestString("todos", "json", requestBody);
+
+        try {
+            responseBody = new JSONObject(response.body().string());
+            System.out.println(responseBody);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Third API call to retrieve the updated list of todos after adding the new todos
+        Response getCurrentTodos = call.getRequest("todos", "json");
+        try {
+            getTodosResponseBody = new JSONObject(getCurrentTodos.body().string());
+            currentTodosCount = getTodosResponseBody.getJSONArray("todos").length();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Then("I should see one new todo with title {string}, description {string} and doneStatus {string} within the application")
     public void i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(String todoTitle, String todoDescription, String todoDoneStatus) {
         // Assert that the title, description, and doneStatus fields match the expected values from the response
@@ -717,7 +760,9 @@ public class TodosStepDefinitions {
 
     @Then("a status code {string} with response phrase {string} is returned")
     public void a_status_code_with_response_phrase_is_returned(String statusCode, String responsePhrase) {
-//        assertEquals(Integer.parseInt(statusCode), response.code() );
+        assertEquals(Integer.parseInt(statusCode), response.code(),
+                "ERROR: The response phrase is: " + response.message() +
+                        "\n instead of : " + responsePhrase );
         assertEquals(responsePhrase, response.message() );
     }
 
