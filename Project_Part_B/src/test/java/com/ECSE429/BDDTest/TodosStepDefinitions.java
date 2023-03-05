@@ -29,7 +29,10 @@ public class TodosStepDefinitions {
     //BACKGROUND
     @Given("the service is running")
     public void the_service_is_running() {
+        // Create a RestApiCall object to handle the API request
         RestApiCall call = new RestApiCall();
+
+        // Verify that the server is running
         response = call.checkService();
         assertEquals(200, response.code());
     }
@@ -286,7 +289,6 @@ public class TodosStepDefinitions {
                     break;
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -337,6 +339,7 @@ public class TodosStepDefinitions {
         response = call.getRequest("todos/" + todoId, "json");
         try {
             responseBody = new JSONObject(response.body().string());
+            System.out.println(responseBody);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -449,7 +452,6 @@ public class TodosStepDefinitions {
         // Create a JSON object with an "id" field containing the category id
         JSONObject requestBody = new JSONObject();
         requestBody.put("id", categoryId);
-        System.out.println(requestBody);
 
         // Create relationship categories between todos and catagories using a POST request
         response = call.postRequest("todos/" + todoId + "/categories", "json", requestBody);
@@ -480,7 +482,6 @@ public class TodosStepDefinitions {
         // Create a JSON object with an "id" field containing the category id
         JSONObject requestBody = new JSONObject();
         requestBody.put("id", categoryId);
-        System.out.println(requestBody);
 
         // Create relationship categories between todos and catagories using a POST request
         response = call.postRequest("todos/" + todoId + "/categories", "json", requestBody);
@@ -719,7 +720,6 @@ public class TodosStepDefinitions {
 
         try {
             responseBody = new JSONObject(response.body().string());
-            System.out.println(responseBody);
 
             JSONArray todosArray = responseBody.getJSONArray("todos");
             JSONObject todo = todosArray.getJSONObject(0);
@@ -734,12 +734,6 @@ public class TodosStepDefinitions {
         } catch(IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @When("I get the nonexistent todo's categories with id {string} using categories endpoint")
-    public void i_get_the_nonexistent_todo_s_categories_with_id_using_categories_endpoint(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
     }
 
     @Then("I should see all the todo related categories with ids {string}")

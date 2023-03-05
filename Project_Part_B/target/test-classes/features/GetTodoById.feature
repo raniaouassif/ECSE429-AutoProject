@@ -8,31 +8,48 @@ Feature: Get Todo By Id
   Scenario Outline: Get a todo by id in endpoint (Normal Flow)
     Given the todo with id "<todoId>" exists
     When I get the todo with id "<todoId>"
-    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
+    Then a status code "200" with response phrase "OK" is returned
     And I should see a response of one todo with id "<todoId>"
     Examples:
-      | todoId  | statusCode   | responsePhrase   |
-      | 1       | 200          | OK               |
-      | 2       | 200          | OK               |
+      | todoId  |
+      | 1       |
+      | 2       |
 
   Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow)
     Given the todo with id "<todoId>" exists
     When I filter the endpoint to get the todo with id "<todoId>"
-    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
+    Then a status code "200" with response phrase "OK" is returned
     And I should see a response of one todo with id "<todoId>"
     Examples:
-      | todoId  | statusCode   | responsePhrase   |
-      | 1       | 200          | OK               |
-      | 2       | 200          | OK               |
+      | todoId  |
+      | 1       |
+      | 2       |
 
   Scenario Outline: Get a nonexistent todo (Error Flow)
     Given the todo with id "<todoId>" does not exist
     When I get the todo with id "<todoId>"
-    Then a status code "<statusCode>" with response phrase "<responsePhrase>" is returned
+    Then a status code "404" with response phrase "Not Found" is returned
     And the response body has the error message "<errorMessage>"
     And no todo is returned
     Examples:
-      | todoId | statusCode | responsePhrase | errorMessage                              |
-      | 0      | 404        | Not Found      | Could not find an instance with todos/0   |
-      | 100    | 404        | Not Found      | Could not find an instance with todos/100 |
+      | todoId | errorMessage                              |
+      | 0      | Could not find an instance with todos/0   |
+      | 100    | Could not find an instance with todos/100 |
+
+  Scenario Outline: Get a todo with invalid id (Error Flow)
+    Given the todo with id "<invalidId>" does not exist
+    When I get the todo with id "<invalidId>"
+    Then a status code "404" with response phrase "Not Found" is returned
+    And the response body has the error message "<errorMessage>"
+    And no todo is returned
+    Examples:
+      | invalidId | errorMessage                                    |
+      | a         | Could not find an instance with todos/a         |
+      | -         | Could not find an instance with todos/-         |
+      | *         | Could not find an instance with todos/*         |
+      | ;         | Could not find an instance with todos/;         |
+      | ;;;;;;    | Could not find an instance with todos/;;;;;;    |
+      | hello     | Could not find an instance with todos/hello     |
+
+
 

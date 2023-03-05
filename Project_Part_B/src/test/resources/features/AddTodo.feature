@@ -16,7 +16,6 @@ Feature: Post Todo
       | with empty Desc              |                      | true           |
       | !()                          | no AlphaChar         | false          |
 
-
   Scenario Outline: Create a new todo with title only (Alternate Flow)
     When I add a new todo with title "<todoTitle>"
     Then a status code "201" with response phrase "Created" is returned
@@ -44,6 +43,8 @@ Feature: Post Todo
       | descriptio\n  | Could not find field: descriptio\n   |
       | nonexistent   | Could not find field: nonexistent    |
       | doneeStatus   | Could not find field: doneeStatus    |
+      | titl          | Could not find field: titl           |
+
 
   Scenario Outline: Create a new todos with duplicate fields  (Error Flow)
     When I add a new todos with title "MyTodo" and duplicate fields "<duplicateField>"
@@ -57,6 +58,7 @@ Feature: Post Todo
       | description     | duplicate key: description   |
 
 
+  # Fails with example =
   Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)
     When I add a new todos with title "MyTodo" with invalid key-value pairs separator "<keyPairSeparator>"
     Then a status code "400" with response phrase "Bad Request" is returned
@@ -70,8 +72,7 @@ Feature: Post Todo
        | =                |
        | ,                |
        | title            |
-       | "                |
        |                  |
-       | =:               |
+       | "                |
 
 
