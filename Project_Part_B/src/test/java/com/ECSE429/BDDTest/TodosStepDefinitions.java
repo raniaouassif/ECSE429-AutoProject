@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TodosStepDefinitions {
@@ -159,6 +161,50 @@ public class TodosStepDefinitions {
         }
     }
 
+    @When("I add a new todos with title {string} and field {string} set to value {string} of type {string}")
+    public void i_add_a_new_todos_with_title_and_field_set_to_value_of_type(String todoTitle, String idField, String fieldValue, String idType) {
+        // Create a RestApiCall object to handle the API request
+        RestApiCall call = new RestApiCall();
+
+        // Create JSONObject to store response body of the two getRequest() API Calls
+        JSONObject getTodosResponseBody = null;
+
+        // First API call to retrieve the current list of todos
+        Response getPreviousTodos = call.getRequest("todos", "json");
+        try {
+            getTodosResponseBody = new JSONObject(getPreviousTodos.body().string());
+            previousTodosCount = getTodosResponseBody.getJSONArray("todos").length();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Create a JSON object with a "title" field containing the specified value
+        String convertedValue = (idType.equals("String")) ?  "\"" + fieldValue + "\"" : fieldValue ;
+        String requestBody =  "{\n" +
+                "\"title\":\"" + todoTitle + "\",\n" +
+                "\"" + idField + "\":" + convertedValue
+               +  "\n}";
+        System.out.println(requestBody);
+
+        // Second API call to add a new todos using a POST request
+        response = call.postRequestString("todos", "json", requestBody);
+        try {
+            responseBody = new JSONObject(response.body().string());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Third API call to retrieve the updated list of todos after adding the new todos
+        Response getCurrentTodos = call.getRequest("todos", "json");
+        try {
+            getTodosResponseBody = new JSONObject(getCurrentTodos.body().string());
+            currentTodosCount = getTodosResponseBody.getJSONArray("todos").length();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
     @When("I add a new todos with title {string} and duplicate fields {string}")
     public void i_add_a_new_todos_with_title_and_duplicate_fields(String todoTitle, String duplicateField) {
         // Create a RestApiCall object to handle the API request
@@ -184,13 +230,11 @@ public class TodosStepDefinitions {
                 "    \"" + duplicateField + "\": \"Other value for field\"\n" +
                 "}";
 
-        System.out.println(requestBody);
         // Second API call to add a new todos using a POST request
         response = call.postRequestString("todos", "json", requestBody);
 
         try {
             responseBody = new JSONObject(response.body().string());
-            System.out.println(responseBody);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -227,13 +271,12 @@ public class TodosStepDefinitions {
         String requestBody = "{\n" +
                 " \"title\"" + keyPairSeparator + "\"" + todoTitle + "\"\n}";
 
-        System.out.println(requestBody);
+        System.out.println("Malformed JSON: \n" + requestBody);
         // Second API call to add a new todos using a POST request
         response = call.postRequestString("todos", "json", requestBody);
 
         try {
             responseBody = new JSONObject(response.body().string());
-            System.out.println(responseBody);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -339,7 +382,6 @@ public class TodosStepDefinitions {
         response = call.getRequest("todos/" + todoId, "json");
         try {
             responseBody = new JSONObject(response.body().string());
-            System.out.println(responseBody);
         } catch (IOException e) {
             e.printStackTrace();
         }

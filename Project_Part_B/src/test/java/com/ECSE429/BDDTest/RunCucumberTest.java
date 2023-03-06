@@ -21,6 +21,7 @@ public class RunCucumberTest {
             // Lauch the rest api todos list manager with the command
             runtime.exec("java -jar runTodoManagerRestAPI-1.5.5.jar");
             System.out.println("Setting up environment");
+            Thread.sleep(1000);
         } catch (Exception e) {
             e.printStackTrace();
         }

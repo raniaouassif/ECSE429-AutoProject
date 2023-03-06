@@ -1,4 +1,4 @@
-Feature: Post Todo Category
+Feature: Add Todo Category
   As a user,
   I want to add a categories relationship between a todo and category
   So that I can easily organize and categorize my todos
