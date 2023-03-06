@@ -92,7 +92,7 @@ public class RestApiCall {
      *
      * @param url         the endpoint URL to send the request to
      * @param contentType the content type of the request body (json or XML)
-     * @param requestBody the String body of the request
+     * @param requestBody the body of the request
      * @return a Response object containing the response from the server, or null if there was an error
      */
     public Response postRequestString(String url, String contentType, String requestBody) {

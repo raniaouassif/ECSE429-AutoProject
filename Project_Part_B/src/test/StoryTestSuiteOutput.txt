@@ -1,0 +1,1050 @@
+Mar. 05, 2023 10:18:24 P.M. io.cucumber.core.options.PickleOrderParser parse
+INFO: Using random scenario order. Seed: 5197651646928444953
+
+Scenario Outline: Get a todo by id in endpoint (Normal Flow)    # src/test/resources/features/GetTodoById.feature:16
+Setting up environment
+  Given the service is running                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "1" exists                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo with id "1"                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then I should see a response of one todo with id "1"          # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                              # src/test/resources/features/AddTodo.feature:15
+Setting up environment
+  Given the service is running                                                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "Complete quiz 3", description "For FACC400" and doneStatus "true"                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title_description_and_done_status(java.lang.String,java.lang.String,java.lang.String)
+  Then I should see one new todo with title "Complete quiz 3", description "For FACC400" and doneStatus "true" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:95
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title"0"MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator "0"                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:99
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title"="MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator "="                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:90)
+
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between nonexistent todo and project by id in endpoint (Error Flow)                                                                 # src/test/resources/features/DeleteTasksofTodo.feature:56
+Setting up environment
+  Given the service is running                                                                                                                                                      # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "0" does not exist                                                                                                                                         # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  And the project with id "1" exists                                                                                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  When I delete the nonexistent tasksof relationship between todo with id "0" and project with id "1" using id in endpoint                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo with invalid id (Error Flow)                                    # src/test/resources/features/GetTodoById.feature:55
+Setting up environment
+  Given the service is running                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id ";;;;;;" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id ";;;;;;"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+      org.opentest4j.AssertionFailedError: ERROR: The response body contains a todo. ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:211)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned(TodosStepDefinitions.java:420)
+	at ✽.no todo is returned(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/GetTodoById.feature:46)
+
+  And the response body has the error message "Could not find an instance with todos/;;;;;;" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                      # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) # src/test/resources/features/GetTodoById.feature:28
+Setting up environment
+  Given the service is running                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "2" exists                                         # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I filter the endpoint to get the todo with id "2"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_filter_the_endpoint_to_get_the_todo_with_id(java.lang.String)
+  Then I should see a response of one todo with id "2"                      # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned             # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                   # src/test/resources/features/AddTodo.feature:16
+Setting up environment
+  Given the service is running                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "with empty Desc", description "" and doneStatus "true"                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title_description_and_done_status(java.lang.String,java.lang.String,java.lang.String)
+  Then I should see one new todo with title "with empty Desc", description "" and doneStatus "true" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field  (Error Flow)             # src/test/resources/features/AddTodo.feature:45
+Setting up environment
+  Given the service is running                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and invalid field "doneeStatus"      # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_invalid_field(java.lang.String,java.lang.String)
+  Then no todo is created                                                         # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Could not find field: doneeStatus" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned          # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title only (Alternate Flow)                                                        # src/test/resources/features/AddTodo.feature:26
+Setting up environment
+  Given the service is running                                                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "Complete quiz 3"                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Then I should see one new todo with title "Complete quiz 3", description "" and doneStatus "false" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) # src/test/resources/features/ViewTodoCategories.feature:32
+Setting up environment
+  Given the service is running                                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "1" exists                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo's categories with id "1" using todo endpoint                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_todo_endpoint(java.lang.String)
+  Then I should see all the todo related categories with ids "1"                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a categories relationship between todo and category instance using put method (Normal Flow) # src/test/resources/features/AddTodoCategories.feature:33
+Setting up environment
+  Given the service is running                                                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the category with id "2" exists                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  And there are no relationship between todo with id "2" and category with id "2"                                    # com.ECSE429.BDDTest.TodosStepDefinitions.there_are_no_relationship_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+  When I add a relationship between todo with id "2" and category with id "2" using put method                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then a status code "200" with response phrase "OK" is returned                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And a new categories relationship is created between todo with id "2" and category with id "2"                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_new_categories_relationship_is_created_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a categories relationship between todo and category instance by id in endpoint (Normal Flow) # src/test/resources/features/AddTodoCategories.feature:20
+Setting up environment
+  Given the service is running                                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "1" exists                                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the category with id "2" exists                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  And there are no relationship between todo with id "1" and category with id "2"                                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_are_no_relationship_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+  When I add a relationship between todo with id "1" and category with id "2" using id in endpoint                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then a status code "201" with response phrase "Created" is returned                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And a new categories relationship is created between todo with id "1" and category with id "2"                      # com.ECSE429.BDDTest.TodosStepDefinitions.a_new_categories_relationship_is_created_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with id in body  (Error Flow)                                                 # src/test/resources/features/AddTodo.feature:56
+Setting up environment
+  Given the service is running                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"id":"100"
+}
+  When I add a new todos with title "MyTodo" and field "id" set to value "100" of type "String"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Invalid Creation: Failed Validation: Not allowed to create with id" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a nonexistent todo (Error Flow)                                   # src/test/resources/features/GetTodoById.feature:39
+Setting up environment
+  Given the service is running                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                            # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "0" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id "0"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+  And the response body has the error message "Could not find an instance with todos/0" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo with invalid id (Error Flow)                                   # src/test/resources/features/GetTodoById.feature:56
+Setting up environment
+  Given the service is running                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                                # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "hello" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id "hello"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+  And the response body has the error message "Could not find an instance with todos/hello" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field  (Error Flow)      # src/test/resources/features/AddTodo.feature:46
+Setting up environment
+  Given the service is running                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and invalid field "titl"      # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_invalid_field(java.lang.String,java.lang.String)
+  Then no todo is created                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Could not find field: titl" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned   # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                    # src/test/resources/features/AddTodo.feature:17
+Setting up environment
+  Given the service is running                                                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "!()", description "no AlphaChar" and doneStatus "false"                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title_description_and_done_status(java.lang.String,java.lang.String,java.lang.String)
+  Then I should see one new todo with title "!()", description "no AlphaChar" and doneStatus "false" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) # src/test/resources/features/GetTodoById.feature:29
+Setting up environment
+  Given the service is running                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "3" exists                                         # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I filter the endpoint to get the todo with id "3"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_filter_the_endpoint_to_get_the_todo_with_id(java.lang.String)
+  Then I should see a response of one todo with id "3"                      # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned             # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with duplicate fields  (Error Flow)        # src/test/resources/features/AddTodo.feature:84
+Setting up environment
+  Given the service is running                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and duplicate fields "description" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_duplicate_fields(java.lang.String,java.lang.String)
+  Then no todo is created                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "duplicate key: description"      # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned        # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title only (Alternate Flow)                                                                     # src/test/resources/features/AddTodo.feature:25
+Setting up environment
+  Given the service is running                                                                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "Record Unit Test Suite Video"                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Then I should see one new todo with title "Record Unit Test Suite Video", description "" and doneStatus "false" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow) # src/test/resources/features/ViewTodoCategories.feature:22
+Setting up environment
+  Given the service is running                                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "2" exists                                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo's categories with id "2" using categories endpoint                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)
+  Then I should see all the todo related categories with ids ""                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and nonexistent project by id in endpoint (Error Flow)          # src/test/resources/features/DeleteTasksofTodo.feature:67
+Setting up environment
+  Given the service is running                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "1" exists                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the project with id "100" does not exist                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_does_not_exist(java.lang.String)
+  When I delete the nonexistent tasksof relationship between todo with id "1" and project with id "100" using id in endpoint # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the response body has the error message "Could not find any instances with todos/1/tasksof/100"                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "404" with response phrase "Not Found" is returned                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title only (Alternate Flow)                                                        # src/test/resources/features/AddTodo.feature:27
+Setting up environment
+  Given the service is running                                                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "with empty Desc"                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Then I should see one new todo with title "with empty Desc", description "" and doneStatus "false" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and project which has already been deleted (Error Flow)       # src/test/resources/features/DeleteTasksofTodo.feature:46
+Setting up environment
+  Given the service is running                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the project with id "1" exists                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  And the todo with id "2" exists                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And there is a tasksof relationship between todo with id "2" and project with id "1"                                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(java.lang.String,java.lang.String)
+  When I delete the tasksof relationship between todo with id "2" and project with id "1" using put method                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then a status code "200" with response phrase "OK" is returned                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And the tasksof relationship between todo with id "2" and project with id "1" is deleted                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(java.lang.String,java.lang.String)
+  When I delete the nonexistent tasksof relationship between todo with id "2" and project with id "1" using id in endpoint # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the response body has the error message "Could not find any instances with todos/2/tasksof/1"                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "404" with response phrase "Not Found" is returned                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow) # src/test/resources/features/ViewTodoCategories.feature:23
+Setting up environment
+  Given the service is running                                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "3" exists                                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo's categories with id "3" using categories endpoint                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)
+  Then I should see all the todo related categories with ids "1,2"                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a categories relationship between todo and category instance by id in endpoint (Normal Flow) # src/test/resources/features/AddTodoCategories.feature:18
+Setting up environment
+  Given the service is running                                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the category with id "1" exists                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  And there are no relationship between todo with id "2" and category with id "1"                                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_are_no_relationship_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+  When I add a relationship between todo with id "2" and category with id "1" using id in endpoint                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then a status code "201" with response phrase "Created" is returned                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And a new categories relationship is created between todo with id "2" and category with id "1"                      # com.ECSE429.BDDTest.TodosStepDefinitions.a_new_categories_relationship_is_created_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:98
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title""MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator ""                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo with invalid id (Error Flow)                               # src/test/resources/features/GetTodoById.feature:53
+Setting up environment
+  Given the service is running                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                            # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "*" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id "*"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+  And the response body has the error message "Could not find an instance with todos/*" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with id in body  (Error Flow)                                                 # src/test/resources/features/AddTodo.feature:57
+Setting up environment
+  Given the service is running                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"ID":10
+}
+  When I add a new todos with title "MyTodo" and field "ID" set to value "10" of type "Int"                        # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:51)
+
+  And the response body has the error message "Invalid Creation: Failed Validation: Not allowed to create with id" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and project using put method (Alternate Flow) # src/test/resources/features/DeleteTasksofTodo.feature:30
+Setting up environment
+  Given the service is running                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the project with id "1" exists                                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  And there is a tasksof relationship between todo with id "2" and project with id "1"                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(java.lang.String,java.lang.String)
+  When I delete the tasksof relationship between todo with id "2" and project with id "1" using put method # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then the tasksof relationship between todo with id "2" and project with id "1" is deleted                # com.ECSE429.BDDTest.TodosStepDefinitions.the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(java.lang.String,java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo by filtering endpoint with id (Alternate Flow) # src/test/resources/features/GetTodoById.feature:27
+Setting up environment
+  Given the service is running                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "1" exists                                         # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I filter the endpoint to get the todo with id "1"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_filter_the_endpoint_to_get_the_todo_with_id(java.lang.String)
+  Then I should see a response of one todo with id "1"                      # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned             # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a categories relationship between todo and category instance by id in endpoint (Normal Flow) # src/test/resources/features/AddTodoCategories.feature:19
+Setting up environment
+  Given the service is running                                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the category with id "2" exists                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  And there are no relationship between todo with id "2" and category with id "2"                                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_are_no_relationship_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+  When I add a relationship between todo with id "2" and category with id "2" using id in endpoint                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then a status code "201" with response phrase "Created" is returned                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And a new categories relationship is created between todo with id "2" and category with id "2"                      # com.ECSE429.BDDTest.TodosStepDefinitions.a_new_categories_relationship_is_created_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:100
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title","MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator ","                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with duplicate fields  (Error Flow)       # src/test/resources/features/AddTodo.feature:83
+Setting up environment
+  Given the service is running                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and duplicate fields "doneStatus" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_duplicate_fields(java.lang.String,java.lang.String)
+  Then no todo is created                                                      # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "duplicate key: doneStatus"      # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned       # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo with invalid id (Error Flow)                               # src/test/resources/features/GetTodoById.feature:54
+Setting up environment
+  Given the service is running                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                            # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id ";" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id ";"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+      org.opentest4j.AssertionFailedError: ERROR: The response body contains a todo. ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:211)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned(TodosStepDefinitions.java:420)
+	at ✽.no todo is returned(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/GetTodoById.feature:46)
+
+  And the response body has the error message "Could not find an instance with todos/;" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between nonexistent todo and project by id in endpoint (Error Flow)                                                                 # src/test/resources/features/DeleteTasksofTodo.feature:57
+Setting up environment
+  Given the service is running                                                                                                                                                      # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "100" does not exist                                                                                                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  And the project with id "1" exists                                                                                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  When I delete the nonexistent tasksof relationship between todo with id "100" and project with id "1" using id in endpoint                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario: Create a new todo with empty title (Error Flow)                                   # src/test/resources/features/AddTodo.feature:29
+Setting up environment
+  Given the service is running                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title ""                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Then no todo is created                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Failed Validation: title : can not be empty" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                    # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field type (Error Flow)                          # src/test/resources/features/AddTodo.feature:69
+Setting up environment
+  Given the service is running                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"doneStatus":2
+}
+  When I add a new todos with title "MyTodo" and field "doneStatus" set to value "2" of type "Int" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Failed Validation: doneStatus should be BOOLEAN"    # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:103
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title"b"MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator "b"                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:96
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title"!"MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator "!"                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with duplicate fields  (Error Flow)  # src/test/resources/features/AddTodo.feature:82
+Setting up environment
+  Given the service is running                                            # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and duplicate fields "title" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_duplicate_fields(java.lang.String,java.lang.String)
+  Then no todo is created                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "duplicate key: title"      # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned  # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field type (Error Flow)                              # src/test/resources/features/AddTodo.feature:73
+Setting up environment
+  Given the service is running                                                                         # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"doneStatus":2.0
+}
+  When I add a new todos with title "MyTodo" and field "doneStatus" set to value "2.0" of type "FLOAT" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Failed Validation: doneStatus should be BOOLEAN"        # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                               # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and project by id in endpoint (Normal Flow)       # src/test/resources/features/DeleteTasksofTodo.feature:19
+Setting up environment
+  Given the service is running                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "1" exists                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the project with id "1" exists                                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  And there is a tasksof relationship between todo with id "1" and project with id "1"                         # com.ECSE429.BDDTest.TodosStepDefinitions.there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(java.lang.String,java.lang.String)
+  When I delete the tasksof relationship between todo with id "1" and project with id "1" using id in endpoint # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the tasksof relationship between todo with id "1" and project with id "1" is deleted                    # com.ECSE429.BDDTest.TodosStepDefinitions.the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(java.lang.String,java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and project which has already been deleted (Error Flow)       # src/test/resources/features/DeleteTasksofTodo.feature:45
+Setting up environment
+  Given the service is running                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the project with id "1" exists                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  And the todo with id "1" exists                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And there is a tasksof relationship between todo with id "1" and project with id "1"                                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(java.lang.String,java.lang.String)
+  When I delete the tasksof relationship between todo with id "1" and project with id "1" using put method                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then a status code "200" with response phrase "OK" is returned                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And the tasksof relationship between todo with id "1" and project with id "1" is deleted                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(java.lang.String,java.lang.String)
+  When I delete the nonexistent tasksof relationship between todo with id "1" and project with id "1" using id in endpoint # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the response body has the error message "Could not find any instances with todos/1/tasksof/1"                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "404" with response phrase "Not Found" is returned                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with id in body  (Error Flow)                                                 # src/test/resources/features/AddTodo.feature:59
+Setting up environment
+  Given the service is running                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"iD":3
+}
+  When I add a new todos with title "MyTodo" and field "iD" set to value "3" of type "Int"                         # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:51)
+
+  And the response body has the error message "Invalid Creation: Failed Validation: Not allowed to create with id" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:101
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title"title"MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator "title"                                             # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) # src/test/resources/features/ViewTodoCategories.feature:33
+Setting up environment
+  Given the service is running                                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "2" exists                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo's categories with id "2" using todo endpoint                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_todo_endpoint(java.lang.String)
+  Then I should see all the todo related categories with ids ""                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field  (Error Flow)             # src/test/resources/features/AddTodo.feature:44
+Setting up environment
+  Given the service is running                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and invalid field "nonexistent"      # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_invalid_field(java.lang.String,java.lang.String)
+  Then no todo is created                                                         # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Could not find field: nonexistent" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned          # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and nonexistent project by id in endpoint (Error Flow)        # src/test/resources/features/DeleteTasksofTodo.feature:68
+Setting up environment
+  Given the service is running                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the project with id "0" does not exist                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_does_not_exist(java.lang.String)
+  When I delete the nonexistent tasksof relationship between todo with id "2" and project with id "0" using id in endpoint # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the response body has the error message "Could not find any instances with todos/2/tasksof/0"                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "404" with response phrase "Not Found" is returned                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:102
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title";"MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator ";"                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todo with title, description and doneStatus (Normal Flow)                                                                    # src/test/resources/features/AddTodo.feature:14
+Setting up environment
+  Given the service is running                                                                                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todo with title "Record Unit Test Suite Video", description "For ECSE429 project" and doneStatus "false"                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title_description_and_done_status(java.lang.String,java.lang.String,java.lang.String)
+  Then I should see one new todo with title "Record Unit Test Suite Video", description "For ECSE429 project" and doneStatus "false" within the application # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_one_new_todo_with_title_description_and_done_status_within_the_application(java.lang.String,java.lang.String,java.lang.String)
+  And a status code "201" with response phrase "Created" is returned                                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)                                # src/test/resources/features/AddTodo.feature:97
+Setting up environment
+  Given the service is running                                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+Malformed JSON: 
+{
+ "title"-"MyTodo"
+}
+  When I add a new todos with title "MyTodo" with invalid key-value pairs separator "-"                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_with_invalid_key_value_pairs_separator(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                                               # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "com.google.gson.stream.MalformedJsonException: Expected ':' at line 2 column 10 path $." # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a relationship between nonexistent todo and category (Error Flow)                        # src/test/resources/features/AddTodoCategories.feature:45
+Setting up environment
+  Given the service is running                                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "100" does not exist                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  And the category with id "2" exists                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  When I add a relationship between todo with id "100" and nonexistent category with id "2" using id in endpoint  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_nonexistent_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And the response body has the error message "Could not find parent thing for relationship todos/100/categories" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field type (Error Flow)                                   # src/test/resources/features/AddTodo.feature:71
+Setting up environment
+  Given the service is running                                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"description":false
+}
+  When I add a new todos with title "MyTodo" and field "description" set to value "false" of type "BOOLEAN" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:63)
+
+  And the response body has the error message "Failed Validation: description should be STRING"             # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                    # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field type (Error Flow)                                  # src/test/resources/features/AddTodo.feature:72
+Setting up environment
+  Given the service is running                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"description":900.12
+}
+  When I add a new todos with title "MyTodo" and field "description" set to value "900.12" of type "FLOAT" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:63)
+
+  And the response body has the error message "Failed Validation: description should be STRING"            # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                   # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a nonexistent todo (Error Flow)                                     # src/test/resources/features/GetTodoById.feature:40
+Setting up environment
+  Given the service is running                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                              # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "100" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id "100"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+  And the response body has the error message "Could not find an instance with todos/100" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                   # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View todo categories relationships between todo and categories using endpoint todos/:id/categories (Normal Flow) # src/test/resources/features/ViewTodoCategories.feature:21
+Setting up environment
+  Given the service is running                                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                                  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "1" exists                                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo's categories with id "1" using categories endpoint                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)
+  Then I should see all the todo related categories with ids "1"                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo by id in endpoint (Normal Flow)    # src/test/resources/features/GetTodoById.feature:18
+Setting up environment
+  Given the service is running                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "3" exists                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo with id "3"                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then I should see a response of one todo with id "3"          # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field  (Error Flow)               # src/test/resources/features/AddTodo.feature:42
+Setting up environment
+  Given the service is running                                                      # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and invalid field "field invalid"      # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_invalid_field(java.lang.String,java.lang.String)
+  Then no todo is created                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Could not find field: field invalid" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View the todo categories relationship between nonexistent todo and categories using endpoint todos/:id/categories (Error Flow)                                    # src/test/resources/features/ViewTodoCategories.feature:45
+Setting up environment
+  Given the service is running                                                                                                                                                      # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                                                                                   # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "0" does not exist                                                                                                                                         # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo's categories with id "0" using categories endpoint                                                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_categories_endpoint(java.lang.String)
+  Then the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+      org.opentest4j.AssertionFailedError: 
+ ERROR: The response body does not have a key "errorMessage". 
+ The response body is : {"categories":[{"description":"","id":"2","title":"Home"},{"description":"","id":"1","title":"Office"},{"description":"","id":"1","title":"Office"}]}
+ And should return error message: 
+Cannot invoke "uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()" because "parent" is null ==> expected: <errorMessages> but was: <categories>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1153)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(TodosStepDefinitions.java:811)
+	at ✽.the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null"(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/ViewTodoCategories.feature:41)
+
+  And a status code "400" with response phrase "Bad Request" is returned                                                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field  (Error Flow)                                              # src/test/resources/features/AddTodo.feature:47
+Setting up environment
+  Given the service is running                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and invalid field "id"                                                # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_invalid_field(java.lang.String,java.lang.String)
+  Then no todo is created                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Invalid Creation: Failed Validation: Not allowed to create with id" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field type (Error Flow)                                 # src/test/resources/features/AddTodo.feature:68
+Setting up environment
+  Given the service is running                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"doneStatus":"false"
+}
+  When I add a new todos with title "MyTodo" and field "doneStatus" set to value "false" of type "String" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Failed Validation: doneStatus should be BOOLEAN"           # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                  # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a categories relationship between todo and category instance using put method (Normal Flow) # src/test/resources/features/AddTodoCategories.feature:34
+Setting up environment
+  Given the service is running                                                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "1" exists                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the category with id "2" exists                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  And there are no relationship between todo with id "1" and category with id "2"                                    # com.ECSE429.BDDTest.TodosStepDefinitions.there_are_no_relationship_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+  When I add a relationship between todo with id "1" and category with id "2" using put method                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then a status code "200" with response phrase "OK" is returned                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And a new categories relationship is created between todo with id "1" and category with id "2"                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_new_categories_relationship_is_created_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with id in body  (Error Flow)                                                 # src/test/resources/features/AddTodo.feature:58
+Setting up environment
+  Given the service is running                                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"Id":2
+}
+  When I add a new todos with title "MyTodo" and field "Id" set to value "2" of type "Int"                         # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:51)
+
+  And the response body has the error message "Invalid Creation: Failed Validation: Not allowed to create with id" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                                           # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and project using put method (Alternate Flow) # src/test/resources/features/DeleteTasksofTodo.feature:31
+Setting up environment
+  Given the service is running                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "1" exists                                                                        # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the project with id "1" exists                                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  And there is a tasksof relationship between todo with id "1" and project with id "1"                     # com.ECSE429.BDDTest.TodosStepDefinitions.there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(java.lang.String,java.lang.String)
+  When I delete the tasksof relationship between todo with id "1" and project with id "1" using put method # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then the tasksof relationship between todo with id "1" and project with id "1" is deleted                # com.ECSE429.BDDTest.TodosStepDefinitions.the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(java.lang.String,java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a categories relationship between todo and category instance using put method (Normal Flow) # src/test/resources/features/AddTodoCategories.feature:32
+Setting up environment
+  Given the service is running                                                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the category with id "1" exists                                                                                # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  And there are no relationship between todo with id "2" and category with id "1"                                    # com.ECSE429.BDDTest.TodosStepDefinitions.there_are_no_relationship_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+  When I add a relationship between todo with id "2" and category with id "1" using put method                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_put_method(java.lang.String,java.lang.String)
+  Then a status code "200" with response phrase "OK" is returned                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And a new categories relationship is created between todo with id "2" and category with id "1"                     # com.ECSE429.BDDTest.TodosStepDefinitions.a_new_categories_relationship_is_created_between_todo_with_id_and_category_with_id(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo by id in endpoint (Normal Flow)    # src/test/resources/features/GetTodoById.feature:17
+Setting up environment
+  Given the service is running                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                    # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "2" exists                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo with id "2"                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then I should see a response of one todo with id "2"          # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_a_response_of_one_todo_with_id(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a relationship between nonexistent todo and category (Error Flow)                      # src/test/resources/features/AddTodoCategories.feature:44
+Setting up environment
+  Given the service is running                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "0" does not exist                                                                     # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  And the category with id "1" exists                                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.the_category_with_id_exists(java.lang.String)
+  When I add a relationship between todo with id "0" and nonexistent category with id "1" using id in endpoint  # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_nonexistent_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                                         # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+  And the response body has the error message "Could not find parent thing for relationship todos/0/categories" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo with invalid id (Error Flow)                               # src/test/resources/features/GetTodoById.feature:52
+Setting up environment
+  Given the service is running                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                            # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "-" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id "-"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+  And the response body has the error message "Could not find an instance with todos/-" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Get a todo with invalid id (Error Flow)                               # src/test/resources/features/GetTodoById.feature:51
+Setting up environment
+  Given the service is running                                                          # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "New Todo"                                            # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  Given the todo with id "a" does not exist                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_does_not_exist(java.lang.String)
+  When I get the todo with id "a"                                                       # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_with_id(java.lang.String)
+  Then no todo is returned                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned()
+  And the response body has the error message "Could not find an instance with todos/a" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  Then a status code "404" with response phrase "Not Found" is returned                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field  (Error Flow)             # src/test/resources/features/AddTodo.feature:43
+Setting up environment
+  Given the service is running                                                    # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  When I add a new todos with title "MyTodo" and invalid field "descriptio
+"      # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_invalid_field(java.lang.String,java.lang.String)
+  Then no todo is created                                                         # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+  And the response body has the error message "Could not find field: descriptio
+" # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned          # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: View todo categories relationships between todo and categories using todo endpoint todos/:id (Alternate Flow) # src/test/resources/features/ViewTodoCategories.feature:34
+Setting up environment
+  Given the service is running                                                                                                  # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  And I add a new todo with title "My New Todo"                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todo_with_title(java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "1" using id in endpoint                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  And I add a relationship between todo with id "3" and category with id "2" using id in endpoint                               # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_relationship_between_todo_with_id_and_category_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Given the todo with id "3" exists                                                                                             # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  When I get the todo's categories with id "3" using todo endpoint                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.i_get_the_todo_s_categories_with_id_using_todo_endpoint(java.lang.String)
+  Then I should see all the todo related categories with ids "1,2"                                                              # com.ECSE429.BDDTest.TodosStepDefinitions.i_should_see_all_the_todo_related_categories_with_ids(java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Create a new todos with invalid field type (Error Flow)                           # src/test/resources/features/AddTodo.feature:70
+Setting up environment
+  Given the service is running                                                                      # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+{
+"title":"MyTodo",
+"description":2
+}
+  When I add a new todos with title "MyTodo" and field "description" set to value "2" of type "Int" # com.ECSE429.BDDTest.TodosStepDefinitions.i_add_a_new_todos_with_title_and_field_set_to_value_of_type(java.lang.String,java.lang.String,java.lang.String,java.lang.String)
+  Then no todo is created                                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created()
+      org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:63)
+
+  And the response body has the error message "Failed Validation: description should be STRING"     # com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(java.lang.String)
+  And a status code "400" with response phrase "Bad Request" is returned                            # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Scenario Outline: Delete a tasksof relationship between todo and project by id in endpoint (Normal Flow)       # src/test/resources/features/DeleteTasksofTodo.feature:18
+Setting up environment
+  Given the service is running                                                                                 # com.ECSE429.BDDTest.TodosStepDefinitions.the_service_is_running()
+  Given the todo with id "2" exists                                                                            # com.ECSE429.BDDTest.TodosStepDefinitions.the_todo_with_id_exists(java.lang.String)
+  And the project with id "1" exists                                                                           # com.ECSE429.BDDTest.TodosStepDefinitions.the_project_with_id_exists(java.lang.String)
+  And there is a tasksof relationship between todo with id "2" and project with id "1"                         # com.ECSE429.BDDTest.TodosStepDefinitions.there_is_a_tasksof_relationship_between_todo_with_id_and_project_with_id(java.lang.String,java.lang.String)
+  When I delete the tasksof relationship between todo with id "2" and project with id "1" using id in endpoint # com.ECSE429.BDDTest.TodosStepDefinitions.i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(java.lang.String,java.lang.String)
+  Then the tasksof relationship between todo with id "2" and project with id "1" is deleted                    # com.ECSE429.BDDTest.TodosStepDefinitions.the_tasksof_relationship_between_todo_with_id_and_project_with_id_is_deleted(java.lang.String,java.lang.String)
+  And a status code "200" with response phrase "OK" is returned                                                # com.ECSE429.BDDTest.TodosStepDefinitions.a_status_code_with_response_phrase_is_returned(java.lang.String,java.lang.String)
+Shutdown system
+
+Failed scenarios:
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:99 # Create a new todos with malformed JSON due to invalid key-value separator (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/GetTodoById.feature:55 # Get a todo with invalid id (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:57 # Create a new todos with id in body  (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/GetTodoById.feature:54 # Get a todo with invalid id (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:59 # Create a new todos with id in body  (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:71 # Create a new todos with invalid field type (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:72 # Create a new todos with invalid field type (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/ViewTodoCategories.feature:45 # View the todo categories relationship between nonexistent todo and categories using endpoint todos/:id/categories (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:58 # Create a new todos with id in body  (Error Flow)
+file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:70 # Create a new todos with invalid field type (Error Flow)
+
+75 Scenarios (10 failed, 65 passed)
+447 Steps (10 failed, 19 skipped, 418 passed)
+1m56.634s
+
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:90)
+
+org.opentest4j.AssertionFailedError: ERROR: The response body contains a todo. ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:211)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned(TodosStepDefinitions.java:420)
+	at ✽.no todo is returned(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/GetTodoById.feature:46)
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:51)
+
+org.opentest4j.AssertionFailedError: ERROR: The response body contains a todo. ==> expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:211)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_returned(TodosStepDefinitions.java:420)
+	at ✽.no todo is returned(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/GetTodoById.feature:46)
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:51)
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:63)
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:63)
+
+org.opentest4j.AssertionFailedError: 
+ ERROR: The response body does not have a key "errorMessage". 
+ The response body is : {"categories":[{"description":"","id":"2","title":"Home"},{"description":"","id":"1","title":"Office"},{"description":"","id":"1","title":"Office"}]}
+ And should return error message: 
+Cannot invoke "uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()" because "parent" is null ==> expected: <errorMessages> but was: <categories>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1153)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.the_response_body_has_the_error_message(TodosStepDefinitions.java:811)
+	at ✽.the response body has the error message "Cannot invoke \"uk.co.compendiumdev.thingifier.core.domain.instances.ThingInstance.getRelationships()\" because \"parent\" is null"(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/ViewTodoCategories.feature:41)
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:51)
+
+org.opentest4j.AssertionFailedError: ERROR: No todos should be added.  ==> expected: <0> but was: <1>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:560)
+	at com.ECSE429.BDDTest.TodosStepDefinitions.no_todo_is_created(TodosStepDefinitions.java:305)
+	at ✽.no todo is created(file:///Users/raniaouassif/Desktop/WINTER2023/ECSE429-Project/Project_Part_B/src/test/resources/features/AddTodo.feature:63)
+
+
+┌───────────────────────────────────────────────────────────────────────────────────┐
+│ Share your Cucumber Report with your team at https://reports.cucumber.io          │
+│ Activate publishing with one of the following:                                    │
+│                                                                                   │
+│ src/test/resources/cucumber.properties:          cucumber.publish.enabled=true    │
+│ src/test/resources/junit-platform.properties:    cucumber.publish.enabled=true    │
+│ Environment variable:                            CUCUMBER_PUBLISH_ENABLED=true    │
+│ JUnit:                                           @CucumberOptions(publish = true) │
+│                                                                                   │
+│ More information at https://cucumber.io/docs/cucumber/environment-variables/      │
+│                                                                                   │
+│ Disable this message with one of the following:                                   │
+│                                                                                   │
+│ src/test/resources/cucumber.properties:          cucumber.publish.quiet=true      │
+│ src/test/resources/junit-platform.properties:    cucumber.publish.quiet=true      │
+└───────────────────────────────────────────────────────────────────────────────────┘

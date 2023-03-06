@@ -45,7 +45,7 @@ Feature: Add Todo
       | doneeStatus   | Could not find field: doneeStatus                                   |
       | titl          | Could not find field: titl                                          |
       | id            | Invalid Creation: Failed Validation: Not allowed to create with id  |
-    
+
   Scenario Outline: Create a new todos with id in body  (Error Flow)
     When I add a new todos with title "MyTodo" and field "<idField>" set to value "<fieldValue>" of type "<idType>"
     Then no todo is created
