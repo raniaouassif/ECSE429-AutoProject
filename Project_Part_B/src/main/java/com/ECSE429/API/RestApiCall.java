@@ -153,10 +153,9 @@ public class RestApiCall {
      * Sends a DELETE request to the specified URL
      *
      * @param url         the endpoint URL to send the request to
-     * @param contentType the content type of the request body (json or XML)
      * @return a Response object containing the response from the server, or null if there was an error
      */
-    public Response deleteRequest(String url, String contentType){
+    public Response deleteRequest(String url){
         OkHttpClient client = new OkHttpClient();
         Response response = null;
         // Construct the full URL by appending the base URL to the endpoint URL
@@ -164,7 +163,6 @@ public class RestApiCall {
 
         Request request = new Request.Builder()
                 .url(url)
-                .addHeader("content-type", "application/" + contentType + "; charset=utf-8")
                 .delete()
                 .build();
         try {

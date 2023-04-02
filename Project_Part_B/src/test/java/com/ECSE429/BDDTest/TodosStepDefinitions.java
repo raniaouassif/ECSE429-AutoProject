@@ -666,7 +666,7 @@ public class TodosStepDefinitions {
     @When("I delete the tasksof relationship between todo with id {string} and project with id {string} using id in endpoint")
     public void i_delete_the_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(String todoId, String projectId) {
         RestApiCall call = new RestApiCall();
-        response = call.deleteRequest("todos/" + todoId + "/tasksof/" + projectId, "json");
+        response = call.deleteRequest("todos/" + todoId + "/tasksof/" + projectId);
     }
 
     @When("I delete the tasksof relationship between todo with id {string} and project with id {string} using put method")
@@ -685,7 +685,7 @@ public class TodosStepDefinitions {
     @When("I delete the nonexistent tasksof relationship between todo with id {string} and project with id {string} using id in endpoint")
     public void i_delete_the_nonexistent_tasksof_relationship_between_todo_with_id_and_project_with_id_using_id_in_endpoint(String todoId, String projectId) {
         RestApiCall call = new RestApiCall();
-        response = call.deleteRequest("todos/" + todoId + "/tasksof/" + projectId, "json");
+        response = call.deleteRequest("todos/" + todoId + "/tasksof/" + projectId);
         try {
             responseBody = new JSONObject(response.body().string());
         } catch (IOException e) {

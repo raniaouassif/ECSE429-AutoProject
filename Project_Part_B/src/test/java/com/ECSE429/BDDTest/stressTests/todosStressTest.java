@@ -1,6 +1,7 @@
 package com.ECSE429.BDDTest.stressTests;
 
 import com.ECSE429.API.RestApiCall;
+import com.sun.management.OperatingSystemMXBean;
 import okhttp3.Response;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
@@ -20,6 +21,7 @@ public class todosStressTest {
     RestApiCall call = new RestApiCall();
     Response response;
 
+    OperatingSystemMXBean osBean = ManagementFactory.getPlatformMXBean(OperatingSystemMXBean.class);
     @Test
     @BeforeAll
     public void setupEnvironment() {
@@ -44,88 +46,204 @@ public class todosStressTest {
     }
 
     @Test
-    public void testPost() throws IOException {
-        int j = 1;
-        List<List<String>> data = new ArrayList<>();
-        List<Integer> valuesToCheck = Arrays.asList(10, 50, 100, 500, 1000, 1500, 2000, 5000, 10000);
+    public void testsPost()  {
+        // Create a JSON object with a "title" field
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("title", "Todo");
 
-        // Initial Free Memory
-        long freeMemory = Runtime.getRuntime().freeMemory();
+        //Values to check
+        List<List<String>> data = new ArrayList<>();
+        List<Integer> valuesToCheck = Arrays.asList(1, 10, 50, 100, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 10100);
+
+        // Memory
+        long totalMemory = osBean.getTotalPhysicalMemorySize() / (1024 * 1024);
+        long freeMemory ;
+        long usedMemory;
+
+        //CPU
+        double systemCpuUsage;
+        double processCpuUsage;
 
         // Start timer
+        long endTime;
+        long elapsedTime;
         long startTime = System.currentTimeMillis();
-        while (j <= 100) {
-            for (int i = j; i <= 10 * j; i++) {
-                // Create a JSON object with a "title" field
-                JSONObject requestBody = new JSONObject();
-                requestBody.put("title", "Todo");
+            for (int i = 0; i <= 10100; i++) {
+                requestBody.put("title", "Post Todo #" + i);
                 response = call.postRequest("todos", "json", requestBody);
+                if (response == null || response.code() != 201) {
+                    System.out.println("Stopped at POST TODO #" + i);
+                    throw new RuntimeException("Project POST failed");
+                }
+                if(valuesToCheck.contains(i)) {
+                    endTime = System.currentTimeMillis();
+                    elapsedTime = endTime - startTime;
+
+                    // Measure CPU usage
+                    systemCpuUsage = osBean.getSystemCpuLoad();
+                    //Process CPU Usage
+                    processCpuUsage = osBean.getProcessCpuLoad();
+
+                    // Measure memory usage
+                    freeMemory = osBean.getFreePhysicalMemorySize() / (1024 * 1024);
+                    usedMemory = totalMemory - freeMemory;
+
+                    // Add data to list
+                    List<String> row = new ArrayList<>();
+                    row.add(String.valueOf(i));
+                    row.add(String.valueOf(elapsedTime));
+                    row.add(String.format("%.2f", systemCpuUsage));
+                    row.add(String.format("%.2f", processCpuUsage));
+                    row.add(String.valueOf(freeMemory));
+                    row.add(String.valueOf(usedMemory));
+                    data.add(row);
+                }
             }
-            long endTime = System.currentTimeMillis();
-            long elapsedTime = endTime - startTime;
-
-            // Measure CPU usage
-            double cpuUsage = ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage();
-
-            // Measure memory usage
-            long totalMemory = Runtime.getRuntime().totalMemory();
-            long usedMemory = totalMemory - freeMemory;
-            // Add data to list
-            List<String> row = new ArrayList<>();
-            row.add(String.valueOf(j));
-            row.add(String.valueOf(elapsedTime));
-            row.add(String.format("%.2f", cpuUsage));
-            row.add(String.valueOf(usedMemory));
-            data.add(row);
-            j*=10;
+        try {
+            writeReport("post.csv", data);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        writeReport("POST_Report.csv", data);
-
     }
 
     @Test
     public void testPut() {
-        long startTime;
-        for (int i = 1; i <= 13; i++) {
-            startTime = System.currentTimeMillis();
+        // Create a JSON object with a "title" field and "description" field
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("description", "Modified Using Put Request");
 
-            // Create a JSON object with a "title" field
-            JSONObject requestBody = new JSONObject();
+        //Values to check
+        List<List<String>> data = new ArrayList<>();
+        List<Integer> valuesToCheck = Arrays.asList(1, 10, 50, 100, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 10100);
+
+        // Memory
+        long totalMemory = osBean.getTotalPhysicalMemorySize() / (1024 * 1024);
+        long freeMemory ;
+        long usedMemory;
+
+        //CPU
+        double systemCpuUsage;
+        double processCpuUsage;
+
+        // Start timer
+        long endTime;
+        long elapsedTime;
+        long startTime = System.currentTimeMillis();
+
+        for (int i = 1; i <= 10100; i++) {
             requestBody.put("title", "Modified Todo #" + i);
-            requestBody.put("description", "Modified Using Put Request");
             response = call.putRequest("todos/" + i, "json", requestBody);
-
-            if (response.code() != 200 && response.code() != 201) {
-                throw new RuntimeException("Todo POST failed");
+            if (response == null || response.code() != 200) {
+                System.out.println("Stopped at POST TODO #" + i);
+                throw new RuntimeException("Project POST failed");
             }
 
-            // Measure CPU
-            // Measure Memory available
+            if(valuesToCheck.contains(i)) {
+                endTime = System.currentTimeMillis();
+                elapsedTime = endTime - startTime;
 
-            if (i == 10 || i == 100 || i == 1000 || i == 10000 || i == 100000 || i == 1000000) {
-                // Measure Time
-                // Measure CPU %
-                // Measure Memory available
+                // Measure CPU usage
+                systemCpuUsage = osBean.getSystemCpuLoad();
+                //Process CPU Usage
+                processCpuUsage = osBean.getProcessCpuLoad();
+
+                // Measure memory usage
+                freeMemory = osBean.getFreePhysicalMemorySize() / (1024 * 1024);
+                usedMemory = totalMemory - freeMemory;
+
+                // Add data to list
+                List<String> row = new ArrayList<>();
+                row.add(String.valueOf(i));
+                row.add(String.valueOf(elapsedTime));
+                row.add(String.format("%.2f", systemCpuUsage));
+                row.add(String.format("%.2f", processCpuUsage));
+                row.add(String.valueOf(freeMemory));
+                row.add(String.valueOf(usedMemory));
+                data.add(row);
             }
+        }
+        try {
+            writeReport("put.csv", data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void testDelete() {
+        //Values to check
+        List<List<String>> data = new ArrayList<>();
+        List<Integer> valuesToCheck = Arrays.asList(1, 10, 50, 100, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 10100);
+
+        // Memory
+//        long totalMemory = Runtime.getRuntime().totalMemory();
+        long totalMemory = osBean.getTotalPhysicalMemorySize() / (1024 * 1024);
+        long freeMemory ;
+        long usedMemory;
+
+        //CPU
+        double systemCpuUsage;
+        double processCpuUsage;
+
+        // Start timer
+        long endTime;
+        long elapsedTime;
+        long startTime = System.currentTimeMillis();
+        for (int i = 1; i <= 10100; i++) {
+            response = call.deleteRequest("todos/" + i);
+
+            if (response == null || response.code() != 200 ) {
+                System.out.println("Stopped at POST TODO #" + i);
+                throw new RuntimeException("Project POST failed");
+            }
+
+            if(valuesToCheck.contains(i)) {
+                endTime = System.currentTimeMillis();
+                elapsedTime = endTime - startTime;
+
+                // Measure CPU usage
+//                    cpuUsage = ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage();
+                systemCpuUsage = osBean.getSystemCpuLoad();
+                //Process CPU Usage
+                processCpuUsage = osBean.getProcessCpuLoad();
+
+                // Measure memory usage
+//                    freeMemory = Runtime.getRuntime().freeMemory();
+                freeMemory = osBean.getFreePhysicalMemorySize() / (1024 * 1024);
+                usedMemory = totalMemory - freeMemory;
+
+                // Add data to list
+                List<String> row = new ArrayList<>();
+                row.add(String.valueOf(i));
+                row.add(String.valueOf(elapsedTime));
+                row.add(String.format("%.2f", systemCpuUsage));
+                row.add(String.format("%.2f", processCpuUsage));
+                row.add(String.valueOf(freeMemory));
+                row.add(String.valueOf(usedMemory));
+                data.add(row);
+            }
+        }
+        try {
+            writeReport("delete.csv", data);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
     // Helper Functions
     public void writeReport(String fileName, List<List<String>> rows) throws IOException {
-        FileWriter fileWriter = new FileWriter(fileName);
-        CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT);
+        try (FileWriter fileWriter = new FileWriter(fileName);
+             CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT)) {
 
-        // Write header
-        List<String> header = Arrays.asList("Objects Number", "Time (ms)", "CPU (%)", "Available Free Memory (B)");
-        csvPrinter.printRecord(header);
+            // Write header
+            List<String> header = Arrays.asList("Objects Number", "Time (ms)", "System CPU Usage (%)","Process CPU Usage (%)", "Free Memory (%)","Used Memory (B)");
+            csvPrinter.printRecord(header);
 
-        for (List<String> row : rows) {
-            csvPrinter.printRecord(row);
+            for (List<String> row : rows) {
+                csvPrinter.printRecord(row);
+            }
+            csvPrinter.flush();
         }
-
-        csvPrinter.flush();
-        csvPrinter.close();
-        fileWriter.close();
     }
 }
