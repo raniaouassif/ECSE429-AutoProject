@@ -42,9 +42,6 @@ public class ApiResponseAsXmlTest {
         Assertions.assertEquals("oops", messages.errorMessages[0]);
 
     }
-
-
-
     @Test
     public void responseError(){
 

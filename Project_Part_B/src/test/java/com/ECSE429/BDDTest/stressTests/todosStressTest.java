@@ -49,7 +49,6 @@ public class todosStressTest {
     public void testsPost()  {
         // Create a JSON object with a "title" field
         JSONObject requestBody = new JSONObject();
-        requestBody.put("title", "Todo");
 
         //Values to check
         List<List<String>> data = new ArrayList<>();
@@ -70,6 +69,8 @@ public class todosStressTest {
         long startTime = System.currentTimeMillis();
             for (int i = 0; i <= 10100; i++) {
                 requestBody.put("title", "Post Todo #" + i);
+                requestBody.put("description", "description");
+
                 response = call.postRequest("todos", "json", requestBody);
                 if (response == null || response.code() != 201) {
                     System.out.println("Stopped at POST TODO #" + i);
@@ -177,7 +178,6 @@ public class todosStressTest {
         List<Integer> valuesToCheck = Arrays.asList(1, 10, 50, 100, 500, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 10100);
 
         // Memory
-//        long totalMemory = Runtime.getRuntime().totalMemory();
         long totalMemory = osBean.getTotalPhysicalMemorySize() / (1024 * 1024);
         long freeMemory ;
         long usedMemory;
@@ -203,13 +203,11 @@ public class todosStressTest {
                 elapsedTime = endTime - startTime;
 
                 // Measure CPU usage
-//                    cpuUsage = ManagementFactory.getOperatingSystemMXBean().getSystemLoadAverage();
                 systemCpuUsage = osBean.getSystemCpuLoad();
                 //Process CPU Usage
                 processCpuUsage = osBean.getProcessCpuLoad();
 
                 // Measure memory usage
-//                    freeMemory = Runtime.getRuntime().freeMemory();
                 freeMemory = osBean.getFreePhysicalMemorySize() / (1024 * 1024);
                 usedMemory = totalMemory - freeMemory;
 
@@ -237,7 +235,7 @@ public class todosStressTest {
              CSVPrinter csvPrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT)) {
 
             // Write header
-            List<String> header = Arrays.asList("Objects Number", "Time (ms)", "System CPU Usage (%)","Process CPU Usage (%)", "Free Memory (%)","Used Memory (B)");
+            List<String> header = Arrays.asList("Objects Number", "Time (ms)", "System CPU Usage (%)","Process CPU Usage (%)", "Free Memory (MB)");
             csvPrinter.printRecord(header);
 
             for (List<String> row : rows) {
