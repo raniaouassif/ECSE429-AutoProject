@@ -1,8 +1,0 @@
-{
-    "java.project.referencedLibraries": [
-        "/Users/raniaouassif/Downloads/jar_files/jackson-annotations-2.14.2.jar",
-        "/Users/raniaouassif/Downloads/jar_files/jackson-core-2.14.2.jar",
-        "/Users/raniaouassif/Downloads/jar_files/jackson-databind-2.14.2.jar",
-        "test-lib/**/*.jar"
-    ]
-}
